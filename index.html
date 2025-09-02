@@ -33,76 +33,87 @@ Merci de vous référer aux documents et communications officielles de l’étab
         const minute = maintenant.getMinutes();
         const seconde = maintenant.getSeconds();
 
-        if (heure = 8){
+        if (heure === 8){
           if (minute >= 10 && minute < 25){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
 
-        if (heure = 9){
+        if (heure === 9){
           if (minute >= 10 && minute < 25){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
 
-        if (heure = 10){
+        if (heure === 10){
           if (minute >= 15 && minute < 35){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
         
-        if (heure = 11){
+        if (heure === 11){
           if (minute >= 25 && minute < 35){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
         
-        if (heure = 12){
+        if (heure === 12){
           if (minute >= 30 && minute < 35){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
         
-        if (heure = 13){
+        if (heure === 13){
           if (minute >= 25 && minute < 30){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
         
-        if (heure = 14){
+        if (heure === 14){
           if (minute >= 25 && minute < 30){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
 
-        if (heure = 15){
+        if (heure === 15){
           if (minute >= 25 && minute < 35){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
 
-        if (heure = 16){
+        if (heure === 16){
           if (minute >= 30 && minute < 35){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
 
-        if (heure = 17){
+        if (heure === 17){
           if (minute >= 30 && minute < 40){
             document.getElementById("grille").style.color = "green";
             document.getElementById("grille").innerText = "ouvert";
+            return;
           }
         }
-        
+        grille.style.color = "red";
+        grille.innerText = "fermé";
       }
     </script>
   </body>
