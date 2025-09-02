@@ -11,7 +11,10 @@
       <h1>Bienvenue sur mon site ! Y seront affichées les horaires de grille et de sonneries en temps réel ainsi que de possibles nouvelles fonctionnalitées plus tard !</h1>
     </header>
     <main>
-      
+      <div>
+        <div id="grille">chargement en cours...</div>
+        <div id="msgGrille">chargement en cours...</div>
+      </div>
     </main>
     <footer>
       <p>
@@ -22,6 +25,85 @@ Le créateur de ce site ne saurait être tenu responsable en cas d’erreurs, de
 Merci de vous référer aux documents et communications officielles de l’établissement pour toute information fiable et à jour.
       </p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+      function mettreAJourHorraires() {
+        const maintenant = new Date();
+        const jour = maintenant.getDay();
+        const heure = maintenant.getHours();
+        const minute = maintenant.getMinutes();
+        const seconde = maintenant.getSeconds();
+
+        if (heure = 8){
+          if (minute >= 10 && minute < 25){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+
+        if (heure = 9){
+          if (minute >= 10 && minute < 25){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+
+        if (heure = 10){
+          if (minute >= 15 && minute < 35){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+        
+        if (heure = 11){
+          if (minute >= 25 && minute < 35){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+        
+        if (heure = 12){
+          if (minute >= 30 && minute < 35){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+        
+        if (heure = 13){
+          if (minute >= 25 && minute < 30){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+        
+        if (heure = 14){
+          if (minute >= 25 && minute < 30){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+
+        if (heure = 15){
+          if (minute >= 25 && minute < 35){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+
+        if (heure = 16){
+          if (minute >= 30 && minute < 35){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+
+        if (heure = 17){
+          if (minute >= 30 && minute < 40){
+            document.getElementById("grille").style.color = "green";
+            document.getElementById("grille").innerText = "ouvert";
+          }
+        }
+        
+      }
+    </script>
   </body>
 </html>
