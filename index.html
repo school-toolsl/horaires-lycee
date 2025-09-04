@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Horaires Jean-Monnet</title>
-  <link rel="stylesheet" href="style.css">
+  <link id="themeStylesheet" rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -478,6 +478,25 @@
       mettreAJourHoraires();
       setTimeout(boucleSynchro, msRestantes);
 }
+
+
+  function switchCSS() {
+      if (link.getAttribute("href") === "style.css") {
+        link.setAttribute("href", "stylee.css");
+        localStorage.setItem("themeCSS", "stylee.css");
+      } else {
+        link.setAttribute("href", "style.css");
+        localStorage.setItem("themeCSS", "style.css");
+      }
+    }
+    
+    const link = document.getElementById("themeStylesheet");
+    const savedStyle = localStorage.getItem("themeCSS");
+    if (savedStyle) {
+      link.setAttribute("href", savedStyle);
+    } else {
+      link.setAttribute("href", "style.css"); // style par défaut
+    }
     
     mettreAJourHoraires();
     boucleSynchro();
