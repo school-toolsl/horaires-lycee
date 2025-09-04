@@ -7,6 +7,9 @@
   <link id="themeStylesheet" rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="divIcon" style="cursor:pointer;">
+    <img src="White-icon.jpg" alt="mode clair" id="icon">
+  </div>
   <header>
     <h1>Bienvenue sur mon site !</h1>
     <h2>Y seront affichées les horaires de grille et de sonneries du lycée Jean-Monnet en temps réel ainsi que de possibles nouvelles fonctionnalitées plus tard !</h2>
@@ -485,18 +488,28 @@
       if (link.getAttribute("href") === "style.css") {
         link.setAttribute("href", "stylee.css");
         localStorage.setItem("themeCSS", "stylee.css");
+        document.getElementById("icon").src = "Black-icon.jpg";
       } else {
         link.setAttribute("href", "style.css");
         localStorage.setItem("themeCSS", "style.css");
+        document.getElementById("icon").src = "White-icon.jpg";
       }
     }
+
+
+
+    document.getElementById("monDiv").onclick = function() {
+      switchCSS()
+    };
     
     const link = document.getElementById("themeStylesheet");
     const savedStyle = localStorage.getItem("themeCSS");
     if (savedStyle) {
       link.setAttribute("href", savedStyle);
     } else {
-      link.setAttribute("href", "style.css"); // style par défaut
+      link.setAttribute("href", "style.css");
+      document.getElementById("icon").src = "White-icon.jpg";
+      
     }
     
     mettreAJourHoraires();
