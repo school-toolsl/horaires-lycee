@@ -9,7 +9,7 @@
 </head>
 <body>
   <div id="divIcon" style="cursor:pointer;">
-    <img src="White-icon.jpg" alt="mode clair" id="icon">
+    <img src="White-icon.png" alt="mode clair" id="icon">
   </div>
   <header>
     <h1>Bienvenue sur mon site !</h1>
@@ -493,13 +493,13 @@
       } else {
         link.setAttribute("href", "style.css");
         localStorage.setItem("themeCSS", "style.css");
-        document.getElementById("icon").src = "White-icon.jpg";
+        document.getElementById("icon").src = "White-icon.png";
       }
     }
 
 
 
-    document.getElementById("monDiv").onclick = function() {
+    document.getElementById("divIcon").onclick = function() {
       switchCSS()
     };
     
