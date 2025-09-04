@@ -9,7 +9,7 @@
 </head>
 <body>
   <div id="divIcon" style="cursor:pointer;">
-    <img src="White-icon.png" alt="mode clair" id="icon">
+    <img src="White-icon.svg" alt="mode clair" id="icon">
   </div>
   <header>
     <h1>Bienvenue sur mon site !</h1>
@@ -489,11 +489,11 @@
       if (link.getAttribute("href") === "style.css") {
         link.setAttribute("href", "stylee.css");
         localStorage.setItem("themeCSS", "stylee.css");
-        document.getElementById("icon").src = "Black-icon.jpg";
+        document.getElementById("icon").src = "Black-icon.svg";
       } else {
         link.setAttribute("href", "style.css");
         localStorage.setItem("themeCSS", "style.css");
-        document.getElementById("icon").src = "White-icon.png";
+        document.getElementById("icon").src = "White-icon.svg";
       }
     }
 
@@ -509,7 +509,7 @@
       link.setAttribute("href", savedStyle);
     } else {
       link.setAttribute("href", "style.css");
-      document.getElementById("icon").src = "White-icon.jpg";
+      document.getElementById("icon").src = "White-icon.svg";
       
     }
     
