@@ -903,21 +903,28 @@
       setTimeout(boucleSynchro, msRestantes);
 
 }
+    const link = document.getElementById("themeStylesheet");
+
+    // Vérifie s'il y a un style sauvegardé dans localStorage
+    const savedStyle = localStorage.getItem("themeCSS");
+    if (savedStyle) {
+      link.setAttribute("href", savedStyle);
+    } else {
+      link.setAttribute("href", "style.css"); // style par défaut
+    }
 
   function switchCSS() {
     const link = document.getElementById("themeStylesheet");
       if (link.getAttribute("href") === "style.css") {
-
         link.setAttribute("href", "stylee.css");
-
         document.getElementById("icon").src = "Black-icon.svg";
         document.getElementById("divIcon").style.backgroundColor = "black";
-
+        localStorage.setItem("themeCSS", "stylee.css");
       } else {
         link.setAttribute("href", "style.css");
         document.getElementById("icon").src = "White-icon.svg";
-    document.getElementById("divIcon").style.backgroundColor = "white";
-
+        document.getElementById("divIcon").style.backgroundColor = "white";
+        localStorage.setItem("themeCSS", "style.css");
       }
 
     }
