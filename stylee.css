@@ -46,17 +46,19 @@ body {
   padding: 2px 0 0 2px;
 }
 
-p {
-  text-align: center;
-  padding: 0 5px 0 5px;
-  margin: 10px 0 5px 0;
-}
+
 
 h1 {
   text-align: center;
   margin: 50px 0 0 0;
   padding: 10px 8px 0px 8px;
   font-size: 24px;
+}
+
+p {
+  text-align: center;
+  padding: 0 5px 0 5px;
+  margin: 10px 0 5px 0;
 }
 
 h2 {
@@ -66,7 +68,7 @@ h2 {
 }
 
 main {
-  flex: 1; /* prend tout l’espace dispo */
+  flex: 1; /* prend tout l’espace disp */
   padding: 0 5px 0 5px;
 }
 
