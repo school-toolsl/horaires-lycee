@@ -1,23 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Horaires Jean-Monnet</title>
-
   <link id="themeStylesheet" rel="stylesheet" href="style.css">
-
   <base href="https://school-toolsl.github.io/horaires-lycee/">
-
 </head>
-
 <body>
-
   <div id="disclaimer">
     <p>
       Vous êtes hors connexion !
@@ -25,63 +15,39 @@
       Les informations peuvent ne pas être à jour
     </p>
   </div>
-
   <div id="divIcon" style="cursor:pointer;">
-
     <img src="White-icon.svg" alt="mode clair" id="icon">
-
   </div>
-
   <header>
-
     <h1>Bienvenue sur mon site !</h1>
-
     <h2>Y seront affichées les horaires de grille et de sonneries du lycée Jean-Monnet en temps réel ainsi que de possibles nouvelles fonctionnalitées plus tard !</h2>
-
   </header>
-
   <main>
-
     <div id="container1">
-
       <div class="container2">
-
         <p>grille :</p>
-
         <div class="cercle" id="circle"></div>
-
         <div id="grille">chargement en cours...</div>
-
       </div>
-
       <div id="msgGrille" class="msgGrille"></div>
-
     </div>
-
+    <div id"btnToDoList">    
+      <button onclick="window.location.href='https://school-toolsl.github.io/horaires-lycee/to_do_list.html'">
+        Ma To-do-list
+      </button>
+    </div>
   </main>
-
   <footer>
-
     <p>
-
       Les informations affichées sur ce site sont fournies à titre purement informatif et peuvent être incorrectes.
-
       <br>
-
       Elles ne constituent en aucun cas une source officielle du lycée.
-
       <br>
-
       Le créateur de ce site ne saurait être tenu responsable en cas d’erreurs, de retards, d’oubli de cours ou de tout autre désagrément résultant de l’utilisation de ces informations.
-
       <br>
-
       Merci de vous référer aux documents et communications officielles de l’établissement pour toute information fiable et à jour.
-
     </p>
-
   </footer>
-
   <script>
     function mettreAJourHoraires() {
       const maintenant = new Date();
@@ -595,7 +561,5 @@
     mettreAJourHoraires();
     boucleSynchro();
   </script>
-
 </body>
-
 </html>
