@@ -92,6 +92,9 @@
       if (heure < 8) {
         outMorning()
       }
+      if (jour === 0 || jour === 6) {
+        outWeekend()
+      }
       if (heure === 8) {
         if (minute >= 00 && minute < 10) {
           f8xx1();
@@ -463,6 +466,15 @@
       displayElement.innerText = "Ouvre à 8h10"
     }
 
+
+    function outWeekend() {
+      const grille = document.getElementById("grille");
+      const displayElement = document.querySelector(".msgGrille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      displayElement.innerText = "Ouvre lundi à 8h10"
+    }
     function outNight() {
       const grille = document.getElementById("grille");
       const displayElement = document.querySelector(".msgGrille");
@@ -520,7 +532,7 @@
     const savedStyle = localStorage.getItem("themeCSS");
     if (savedStyle) {
       link.setAttribute("href", savedStyle);
-      if (savedStyle === "stylee.css") {
+      if (savedStyle === "styleBlack.css") {
         document.getElementById("icon").src = "Black-icon.svg";
         document.getElementById("divIcon").style.backgroundColor = "black";
       } else {
@@ -536,10 +548,10 @@
     function switchCSS() {
       const link = document.getElementById("themeStylesheet");
       if (link.getAttribute("href") === "style.css") {
-        link.setAttribute("href", "stylee.css");
+        link.setAttribute("href", "styleBlack.css");
         document.getElementById("icon").src = "Black-icon.svg";
         document.getElementById("divIcon").style.backgroundColor = "black";
-        localStorage.setItem("themeCSS", "stylee.css");
+        localStorage.setItem("themeCSS", "styleBlack.css");
       } else {
         link.setAttribute("href", "style.css");
         document.getElementById("icon").src = "White-icon.svg";
