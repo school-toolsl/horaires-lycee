@@ -554,10 +554,48 @@
     function quandDeconnecte() {
       document.getElementById("disclaimer").style.display = "block";
     }
+
+
+    function flashFooter(footerId = 'footer') {
+  // Récupération du compteur depuis localStorage
+  let footerCounter = localStorage.getItem('footerCounter');
+  footerCounter = footerCounter ? parseInt(footerCounter, 10) : 0;
+
+  // Incrémentation
+  footerCounter++;
+
+  // Si c'est l'une des trois premières visites
+  if (footerCounter <= 3) {
+    const footer = document.getElementById(footerId);
+    if (!footer) return;
+
+    // Définir l'animation via style
+    footer.style.transition = 'background-color 0.2s';
+    
+    let flashes = 0;
+    const maxFlashes = 3;
+    const originalColor = getComputedStyle(footer).backgroundColor;
+    
+    const interval = setInterval(() => {
+      footer.style.backgroundColor = (footer.style.backgroundColor === 'rgb(255, 0, 0)') 
+        ? originalColor 
+        : 'red';
+      flashes++;
+      if (flashes >= maxFlashes * 2) clearInterval(interval); // *2 car chaque flash = on+off
+    }, 200);
+  }
+
+  // Sauvegarde du compteur
+  localStorage.setItem('footerCounter', footerCounter);
+}
+
+
+    
     // Vérifie toutes les 10 secondes
     setInterval(testConnexion, 10000);
     // Vérifie aussi dès le chargement
     testConnexion();
+    flashFooter(); // Appelle la fonction dès le chargement de la page
     mettreAJourHoraires();
     boucleSynchro();
   </script>
