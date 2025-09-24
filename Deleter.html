@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Supprimer une clé</title>
+  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 250px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #c0392b;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+
+    .popup-content {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .popup-content button {
+      margin: 10px 5px 0;
+      background: #444;
+    }
+
+    .popup-content button.confirm {
+      background-color: #e74c3c;
+    }
+
+    .popup-content button.confirm:hover {
+      background-color: #c0392b;
+    }
+
+    #keyList {
+      margin-top: 2em;
+      width: 100%;
+      max-width: 500px;
+      background: #222;
+      padding: 1em;
+      border-radius: 10px;
+    }
+
+    #keyList h3 {
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
+
+    #keyList ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #keyList li {
+      background: #333;
+      margin: 5px 0;
+      padding: 8px;
+      border-radius: 5px;
+      overflow-wrap: break-word;
+    }
+
+    #error {
+      margin-top: 1em;
+      color: #f55;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Supprimer une clé du localStorage</h2>
+  <input type="text" id="keyInput" placeholder="Nom de la clé à supprimer" />
+  <button onclick="showPopup()">Supprimer</button>
+
+  <div class="popup" id="confirmPopup">
+    <div class="popup-content">
+      <p>Es-tu sûr de vouloir supprimer cette clé ?</p>
+      <button class="confirm" onclick="deleteKey()">Oui, supprimer</button>
+      <button onclick="hidePopup()">Annuler</button>
+    </div>
+  </div>
+
+  <div id="keyList">
+    <h3>Clés actuelles du localStorage :</h3>
+    <ul id="keyItems"></ul>
+  </div>
+
+  <div id="error"></div>
+
+  <script>
+    // 🔒 Liste des clés protégées (modifie ici ce que tu veux bloquer)
+    const protectedKeys = ["dreams", "dreamslauryn", "lies", "objectives", "todoChecklist", "todoChecklistDate"];
+
+    function showPopup() {
+      const key = document.getElementById("keyInput").value.trim();
+      document.getElementById("error").textContent = "";
+
+      if (!key) {
+        document.getElementById("error").textContent = "⚠️ Entre une clé à supprimer.";
+        return;
+      }
+
+      if (protectedKeys.includes(key)) {
+        document.getElementById("error").textContent = `❌ La clé "${key}" est protégée et ne peut pas être supprimée.`;
+        return;
+      }
+
+      document.getElementById("confirmPopup").style.display = "flex";
+    }
+
+    function hidePopup() {
+      document.getElementById("confirmPopup").style.display = "none";
+    }
+
+    function deleteKey() {
+      const key = document.getElementById("keyInput").value.trim();
+
+      if (protectedKeys.includes(key)) {
+        document.getElementById("error").textContent = `❌ La clé "${key}" est protégée et ne peut pas être supprimée.`;
+        hidePopup();
+        return;
+      }
+
+      if (localStorage.getItem(key) !== null) {
+        localStorage.removeItem(key);
+        alert("Clé supprimée !");
+      } else {
+        alert("Clé introuvable.");
+      }
+
+      hidePopup();
+      document.getElementById("keyInput").value = "";
+      updateKeyList();
+    }
+
+    function updateKeyList() {
+      const keyList = document.getElementById("keyItems");
+      keyList.innerHTML = "";
+
+      if (localStorage.length === 0) {
+        keyList.innerHTML = "<li><em>Aucune clé présente.</em></li>";
+        return;
+      }
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const isProtected = protectedKeys.includes(key);
+        keyList.innerHTML += `<li>${key}${isProtected ? " 🔒" : ""}</li>`;
+      }
+    }
+
+    // Charger au démarrage
+    updateKeyList();
+  </script>
+</body>
+</html>
