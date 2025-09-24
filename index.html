@@ -569,25 +569,29 @@
     const footer = document.getElementById(footerId);
     if (!footer) return;
 
-    // Définir l'animation via style
     footer.style.transition = 'background-color 0.2s';
-    
+    const originalColor = getComputedStyle(footer).backgroundColor;
     let flashes = 0;
     const maxFlashes = 3;
-    const originalColor = getComputedStyle(footer).backgroundColor;
-    
+
     const interval = setInterval(() => {
-      footer.style.backgroundColor = (footer.style.backgroundColor === 'rgb(255, 0, 0)') 
-        ? originalColor 
-        : 'red';
+      // Alterne entre rouge et la couleur d'origine
+      if (flashes % 2 === 0) {
+        footer.style.backgroundColor = 'red';
+      } else {
+        footer.style.backgroundColor = originalColor;
+      }
       flashes++;
-      if (flashes >= maxFlashes * 2) clearInterval(interval); // *2 car chaque flash = on+off
+      if (flashes >= maxFlashes * 2) {
+        clearInterval(interval);
+        footer.style.backgroundColor = originalColor; // Remet la couleur d'origine à la fin
+      }
     }, 200);
   }
 
   // Sauvegarde du compteur
   localStorage.setItem('footerCounter', footerCounter);
-}
+    }
 
 
     
