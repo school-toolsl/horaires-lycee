@@ -112,3 +112,12 @@ footer {
   padding: 5px 5px 5px 0;
   margin-bottom: 0px;
   }
+
+@media (min-width: 768px) {
+  h1 {
+    margin: 20px;
+  }
+  container1 {
+    max-width: 250px;
+  }
+}
