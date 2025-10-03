@@ -113,11 +113,11 @@ footer {
   margin-bottom: 0px;
   }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   h1 {
     margin: 20px;
   }
-  container1 {
+  #container1 {
     max-width: 250px;
   }
 }
