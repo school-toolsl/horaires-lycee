@@ -125,5 +125,13 @@ footer {
     max-width: 750px;
     min-height: 150px;
     text-align: center;
+    margin: 0 auto;
   }
+}
+@media (min-width: 700px) {
+  #container1 {
+    width: 315px;
+    height: 100px;
+  }
+}
 }
