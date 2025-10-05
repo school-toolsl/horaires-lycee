@@ -427,7 +427,7 @@
 
     function error() {
       const grille = document.getElementById("grille");
-      const displayElement = document.querySelector(".msgGrille");
+      const displayElement = document.getElementById("msgGrille");
       grille.style.color = "red";
       grille.innerText = "erreur veuillez réessayer ultérieurment";
       changeCircle("closed")
@@ -436,7 +436,7 @@
 
     function outMorning() {
       const grille = document.getElementById("grille");
-      const displayElement = document.querySelector(".msgGrille");
+      const displayElement = document.getElementById("msgGrille");
       grille.style.color = "red";
       grille.innerText = "fermé";
       changeCircle("closed")
@@ -445,7 +445,7 @@
 
     function outWeekend() {
       const grille = document.getElementById("grille");
-      const displayElement = document.querySelector(".msgGrille");
+      const displayElement = document.getElementById("msgGrille");
       grille.style.color = "red";
       grille.innerText = "fermé";
       changeCircle("closed")
@@ -454,14 +454,14 @@
 
     function outNight() {
       const grille = document.getElementById("grille");
-      const displayElement = document.querySelector(".msgGrille");
+      const displayElement = document.getElementById("msgGrille");
       grille.style.color = "red";
       grille.innerText = "fermé";
       changeCircle("closed")
       displayElement.innerText = "Ouvre demain à 8h10"
     }
     // élément cible où tu veux afficher le décompte
-    const displayElement = document.querySelector(".msgGrille");
+    const displayElement = document.getElementById("msgGrille");
 
     function startCountdown(targetHour, targetMinute, status) {
       function updateTimer() {
