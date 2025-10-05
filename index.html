@@ -25,13 +25,21 @@
     <h2>Y seront affichées les horaires de grille et de sonneries du lycée Jean-Monnet en temps réel ainsi que de possibles nouvelles fonctionnalitées plus tard !</h2>
   </header>
   <main>
-    <div id="container1">
+    <div class="container1">
       <div class="container2">
         <p>grille :</p>
-        <div class="cercle" id="circle"></div>
+        <div id="cercleGrille"></div>
         <div id="grille">chargement en cours...</div>
       </div>
-      <div id="msgGrille" class="msgGrille"></div>
+      <div id="msgGrille" class="msg"></div>
+    </div>
+    <div class="container1">
+      <div class="container2">
+        <p>autres</p>
+        <div id="cercleAutres"></div>
+        <div id="autres">chargement en cours...</div>
+      </div>
+      <div id="msgAutres" class="msg"></div>
     </div>
     <div id="btnToDoList">
       <button onclick="window.location.href='https://school-toolsl.github.io/horaires-lycee/to_do_list.html'">
@@ -513,6 +521,14 @@
       document.getElementById("icon").src = "White-icon.svg";
       document.getElementById("divIcon").style.backgroundColor = "white";
     }
+
+
+
+
+
+
+
+
 
     function switchCSS() {
       const link = document.getElementById("themeStylesheet");
