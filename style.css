@@ -71,13 +71,13 @@ main {
   padding: 0 5px 0 5px;
 }
 
-#container1 {
+.container1 {
   font-size: 16px;
   background-color: #222222;
   border-radius: 10px;
 }
 
-#container2 {
+.container2 {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -86,12 +86,12 @@ main {
   border-radius: 10px;
 }
 
-#container2 p {
+container2 p {
   margin: 0 0 0 5px;
   padding: 5px 0 5px 5px;
 }
 
-.cercleGrille {
+#cercleGrille {
   width: 8px;
   height: 8px;
   background-color: red;
@@ -99,7 +99,7 @@ main {
   margin: 2px 0 0 0;
 }
 
-.cercleAutres {
+#cercleAutres {
   width: 8px;
   height: 8px;
   background-color: red;
@@ -107,7 +107,7 @@ main {
   margin: 2px 0 0 0;
 }
 
-#msg {
+.msg {
   margin: 1px 0 15px 10px;
   padding-bottom: 5px
 }
@@ -125,7 +125,7 @@ footer {
   h1 {
     margin: 20px;
   }
-  #container1 {
+  .container1 {
     width: 45%;
     height: 100px;
   }
@@ -137,7 +137,7 @@ footer {
   }
 }
 @media (min-width: 700px) {
-  #container1 {
+  .container1 {
     width: 315px;
     height: 100px;
   }
