@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link id="themeStylesheet" rel="stylesheet" href="style.css">
   <base href="https://school-toolsl.github.io/horaires-lycee/">
 </head>
+
 <body>
   <div id="disclaimer">
     <p>
@@ -31,7 +33,7 @@
       </div>
       <div id="msgGrille" class="msgGrille"></div>
     </div>
-    <div id="btnToDoList">    
+    <div id="btnToDoList">
       <button onclick="window.location.href='https://school-toolsl.github.io/horaires-lycee/to_do_list.html'">
         Ma To-do-list
       </button>
@@ -55,124 +57,125 @@
       const heure = maintenant.getHours();
       const minute = maintenant.getMinutes();
       const seconde = maintenant.getSeconds();
-      if (heure < 8) {
-        outMorning()
-      }
       if (jour === 0 || jour === 6) {
         outWeekend()
-      }
-      if (heure === 8) {
-        if (minute >= 00 && minute < 10) {
-          f8xx1();
-        } else if (minute >= 10 && minute < 25) {
-          f8xx2()
-        } else if (minute >= 25 && minute < 60) {
-          f8xx3()
-        } else {
-          error()
+      } else {
+        if (heure < 8) {
+          outMorning()
         }
-      }
-      if (heure === 9) {
-        if (minute >= 00 && minute < 10) {
-          f9xx1();
-        } else if (minute >= 10 && minute < 25) {
-          f9xx2()
-        } else if (minute >= 25 && minute < 60) {
-          f9xx3()
-        } else {
-          error()
+        if (heure === 8) {
+          if (minute >= 00 && minute < 10) {
+            f8xx1();
+          } else if (minute >= 10 && minute < 25) {
+            f8xx2()
+          } else if (minute >= 25 && minute < 60) {
+            f8xx3()
+          } else {
+            error()
+          }
         }
-      }
-      if (heure === 10) {
-        if (minute >= 00 && minute < 15) {
-          f10xx1();
-        } else if (minute >= 15 && minute < 35) {
-          f10xx2()
-        } else if (minute >= 35 && minute < 60) {
-          f10xx3()
-        } else {
-          error()
+        if (heure === 9) {
+          if (minute >= 00 && minute < 10) {
+            f9xx1();
+          } else if (minute >= 10 && minute < 25) {
+            f9xx2()
+          } else if (minute >= 25 && minute < 60) {
+            f9xx3()
+          } else {
+            error()
+          }
         }
-      }
-      if (heure === 11) {
-        if (minute >= 00 && minute < 25) {
-          f11xx1();
-        } else if (minute >= 25 && minute < 35) {
-          f11xx2()
-        } else if (minute >= 35 && minute < 60) {
-          f11xx3()
-        } else {
-          error()
+        if (heure === 10) {
+          if (minute >= 00 && minute < 15) {
+            f10xx1();
+          } else if (minute >= 15 && minute < 35) {
+            f10xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f10xx3()
+          } else {
+            error()
+          }
         }
-      }
-      if (heure === 12) {
-        if (minute >= 00 && minute < 30) {
-          f12xx1();
-        } else if (minute >= 30 && minute < 35) {
-          f12xx2()
-        } else if (minute >= 35 && minute < 60) {
-          f12xx3()
-        } else {
-          error()
+        if (heure === 11) {
+          if (minute >= 00 && minute < 25) {
+            f11xx1();
+          } else if (minute >= 25 && minute < 35) {
+            f11xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f11xx3()
+          } else {
+            error()
+          }
         }
-      }
-      if (heure === 13) {
-        if (minute >= 00 && minute < 20) {
-          f13xx1();
-        } else if (minute >= 20 && minute < 30) {
-          f13xx2()
-        } else if (minute >= 30 && minute < 60) {
-          f13xx3()
-        } else {
-          error()
+        if (heure === 12) {
+          if (minute >= 00 && minute < 30) {
+            f12xx1();
+          } else if (minute >= 30 && minute < 35) {
+            f12xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f12xx3()
+          } else {
+            error()
+          }
         }
-      }
-      if (heure === 14) {
-        if (minute >= 00 && minute < 20) {
-          f14xx1();
-        } else if (minute >= 20 && minute < 30) {
-          f14xx2()
-        } else if (minute >= 30 && minute < 60) {
-          f14xx3()
-        } else {
-          error()
+        if (heure === 13) {
+          if (minute >= 00 && minute < 20) {
+            f13xx1();
+          } else if (minute >= 20 && minute < 30) {
+            f13xx2()
+          } else if (minute >= 30 && minute < 60) {
+            f13xx3()
+          } else {
+            error()
+          }
         }
-      }
-      if (heure === 15) {
-        if (minute >= 00 && minute < 25) {
-          f15xx1();
-        } else if (minute >= 25 && minute < 35) {
-          f15xx2()
-        } else if (minute >= 35 && minute < 60) {
-          f15xx3()
-        } else {
-          error()
+        if (heure === 14) {
+          if (minute >= 00 && minute < 20) {
+            f14xx1();
+          } else if (minute >= 20 && minute < 30) {
+            f14xx2()
+          } else if (minute >= 30 && minute < 60) {
+            f14xx3()
+          } else {
+            error()
+          }
         }
-      }
-      if (heure === 16) {
-        if (minute >= 00 && minute < 25) {
-          f16xx1();
-        } else if (minute >= 25 && minute < 35) {
-          f16xx2()
-        } else if (minute >= 35 && minute < 60) {
-          f16xx3()
-        } else {
-          error()
+        if (heure === 15) {
+          if (minute >= 00 && minute < 25) {
+            f15xx1();
+          } else if (minute >= 25 && minute < 35) {
+            f15xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f15xx3()
+          } else {
+            error()
+          }
         }
-      }
-      if (heure === 17) {
-        if (minute >= 00 && minute < 30) {
-          f17xx1();
-        } else if (minute >= 30 && minute < 45) {
-          f17xx2()
-        } else if (minute >= 45 && minute < 60) {
+        if (heure === 16) {
+          if (minute >= 00 && minute < 25) {
+            f16xx1();
+          } else if (minute >= 25 && minute < 35) {
+            f16xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f16xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 17) {
+          if (minute >= 00 && minute < 30) {
+            f17xx1();
+          } else if (minute >= 30 && minute < 45) {
+            f17xx2()
+          } else if (minute >= 45 && minute < 60) {
+            outNight()
+          } else {
+            error()
+          }
+        }
+        if (heure > 17) {
           outNight()
-        } else {
-          error()
         }
-      }
-      if (heure > 17) {
-        outNight()
       }
     }
 
@@ -432,7 +435,6 @@
       displayElement.innerText = "Ouvre à 8h10"
     }
 
-
     function outWeekend() {
       const grille = document.getElementById("grille");
       const displayElement = document.querySelector(".msgGrille");
@@ -441,6 +443,7 @@
       changeCircle("closed")
       displayElement.innerText = "Ouvre lundi à 8h10"
     }
+
     function outNight() {
       const grille = document.getElementById("grille");
       const displayElement = document.querySelector(".msgGrille");
@@ -555,46 +558,37 @@
       document.getElementById("disclaimer").style.display = "block";
     }
 
-
     function flashFooter(footerId = 'footer') {
-  // Récupération du compteur depuis localStorage
-  let footerCounter = localStorage.getItem('footerCounter');
-  footerCounter = footerCounter ? parseInt(footerCounter, 10) : 0;
-
-  // Incrémentation
-  footerCounter++;
-
-  // Si c'est l'une des trois premières visites
-  if (footerCounter <= 3) {
-    const footer = document.getElementById(footerId);
-    if (!footer) return;
-
-    footer.style.transition = 'background-color 0.2s';
-    const originalColor = getComputedStyle(footer).backgroundColor;
-    let flashes = 0;
-    const maxFlashes = 3;
-
-    const interval = setInterval(() => {
-      // Alterne entre rouge et la couleur d'origine
-      if (flashes % 2 === 0) {
-        footer.style.backgroundColor = 'red';
-      } else {
-        footer.style.backgroundColor = originalColor;
+      // Récupération du compteur depuis localStorage
+      let footerCounter = localStorage.getItem('footerCounter');
+      footerCounter = footerCounter ? parseInt(footerCounter, 10) : 0;
+      // Incrémentation
+      footerCounter++;
+      // Si c'est l'une des trois premières visites
+      if (footerCounter <= 3) {
+        const footer = document.getElementById(footerId);
+        if (!footer) return;
+        footer.style.transition = 'background-color 0.2s';
+        const originalColor = getComputedStyle(footer).backgroundColor;
+        let flashes = 0;
+        const maxFlashes = 3;
+        const interval = setInterval(() => {
+          // Alterne entre rouge et la couleur d'origine
+          if (flashes % 2 === 0) {
+            footer.style.backgroundColor = 'red';
+          } else {
+            footer.style.backgroundColor = originalColor;
+          }
+          flashes++;
+          if (flashes >= maxFlashes * 2) {
+            clearInterval(interval);
+            footer.style.backgroundColor = originalColor; // Remet la couleur d'origine à la fin
+          }
+        }, 200);
       }
-      flashes++;
-      if (flashes >= maxFlashes * 2) {
-        clearInterval(interval);
-        footer.style.backgroundColor = originalColor; // Remet la couleur d'origine à la fin
-      }
-    }, 200);
-  }
-
-  // Sauvegarde du compteur
-  localStorage.setItem('footerCounter', footerCounter);
+      // Sauvegarde du compteur
+      localStorage.setItem('footerCounter', footerCounter);
     }
-
-
-    
     // Vérifie toutes les 10 secondes
     setInterval(testConnexion, 10000);
     // Vérifie aussi dès le chargement
@@ -604,4 +598,5 @@
     boucleSynchro();
   </script>
 </body>
+
 </html>
