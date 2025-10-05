@@ -86,7 +86,7 @@ main {
   border-radius: 10px;
 }
 
-container2 p {
+.container2 p {
   margin: 0 0 0 5px;
   padding: 5px 0 5px 5px;
 }
