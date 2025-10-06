@@ -200,7 +200,7 @@ footer {
     display: none;
   }
   #upbar #title{
-    display: block;
+    position: static;
     margin: 0 auto;
   }
   #upbar {
