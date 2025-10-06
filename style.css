@@ -194,3 +194,15 @@ footer {
     display: block;
   }
 }
+@media (max-width: 550px) {
+  #QSN {
+    display: none;
+  }
+  #upbar #title{
+    display: block;
+    margin: 0 auto;
+  }
+  #upbar {
+    min-height: 77px;
+  }
+}
