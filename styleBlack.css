@@ -34,7 +34,7 @@ body {
 
 #upbar{
   display: flex;
-  background-color: #222222;
+  background-color: #555555;
   border-radius: 0 0 15px 15px;
 }
 
@@ -53,7 +53,6 @@ body {
 }
 
 #upbar #QSN a:hover {
-  color: #999999;
   text-decoration: underline;
 }
 
