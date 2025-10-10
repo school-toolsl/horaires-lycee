@@ -225,14 +225,21 @@ footer {
   }
 }
 @media (max-width: 315px) {
-  #title {
+  #upbar #title {
     transform: translateX(0);
-    left: 60px;
+    left: -5px;
   }
   #divIcon {
     display: none;
   }
   #Icon {
     display: none;
+  }
+}
+@media (max-width: 260px) {
+  #upbar #menu {
+    display: none;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
