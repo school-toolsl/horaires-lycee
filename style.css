@@ -239,6 +239,8 @@ footer {
 @media (max-width: 260px) {
   #upbar #menu {
     display: none;
+  }
+  #upbar #title {
     left: 50%;
     transform: translateX(-50%);
   }
