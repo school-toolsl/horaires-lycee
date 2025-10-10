@@ -95,6 +95,9 @@ h1 {
   padding: 10px 8px 0px 8px;
   font-size: 24px;
 }
+header h1 {
+  margin: 77px;
+}
 
 h2 {
   text-align: center;
