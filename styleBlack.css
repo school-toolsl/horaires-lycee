@@ -194,7 +194,8 @@ footer {
 }
 @media (max-width: 700px) {
   #upbar #QSN {
-    margin: 0 0 0 200px;
+    left: 200px;
+    transform: translateX(0);
   }
 }
 @media (max-width: 550px) {
