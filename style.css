@@ -33,6 +33,11 @@ body {
 }
 #upbar{
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 77px;
   background-color: #222222;
   border-radius: 0 0 15px 15px;
 }
@@ -43,7 +48,9 @@ body {
 }
 
 #upbar #QSN {
-  margin: 0 auto;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #upbar #QSN a {
@@ -191,11 +198,10 @@ footer {
     display: none;
   }
   #upbar #title{
-    position: static;
-    margin: 0 auto;
-  }
-  #upbar {
-    min-height: 77px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 300px;
   }
   #menu {
     height: 30px;
