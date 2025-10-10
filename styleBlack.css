@@ -246,3 +246,16 @@ footer {
     transform: translateX(-50%);
   }
 }
+@media (max-width: 240px) {
+  body > * {
+    display: none;
+  }
+}
+@media (max-width: 200px) {
+  #upbar {
+    display:none;
+  }
+  body{
+    background-color: white;
+  }
+}
