@@ -223,3 +223,14 @@ footer {
     display: none;
   }
 }
+@media (max-width: 315px) {
+  #title {
+    left: 60px;
+  }
+  #divIcon {
+    display: none;
+  }
+  #Icon {
+    display: none;
+  }
+}
