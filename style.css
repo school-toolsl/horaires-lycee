@@ -245,7 +245,7 @@ footer {
     transform: translateX(-50%);
   }
 }
-@media (max-width: 240px) {
+@media (max-width: 239px) {
   body > * {
     display: none;
   }
