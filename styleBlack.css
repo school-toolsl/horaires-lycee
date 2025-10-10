@@ -227,6 +227,7 @@ footer {
 }
 @media (max-width: 315px) {
   #title {
+    transform: translateX(0);
     left: 60px;
   }
   #divIcon {
