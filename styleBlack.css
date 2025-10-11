@@ -179,6 +179,9 @@ footer {
     height: 100px;
     margin: 0 10px;
   }
+  .container2{
+    margin: 10px 0 5px 0;
+  }
   header {
     max-width: 750px;
     min-height: 150px;
@@ -257,5 +260,13 @@ footer {
   }
   body{
     background-color: white;
+  }
+}
+@media (min-width: 500px) {
+  .container2 {
+    margin-left: 15px
+  }
+  #msgGrille {
+    margin-left: 25px
   }
 }
