@@ -81,7 +81,11 @@ body {
   height:90%;
   padding: 2px 0 0 2px;
 }
-
+#screenSize{
+  position: fixed;
+  display: none;
+  color: red;
+}
 p {
   text-align: center;
   padding: 0 5px 0 5px;
@@ -252,13 +256,12 @@ footer {
   body > * {
     display: none;
   }
-}
-@media (max-width: 200px) {
-  #upbar {
-    display:none;
-  }
-  body{
-    background-color: white;
+  #screenSize{
+    display: block;
+    top: 200px;
+    text-align: center;
+    margin: 0 5px;
+    font-size: 12px
   }
 }
 @media (min-width: 500px) {
