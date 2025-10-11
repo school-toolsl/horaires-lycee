@@ -187,13 +187,19 @@ footer {
     margin: 0 10px;
   }
   .container2{
-    margin: 10px 0 5px 0;
+    padding: 10px 0 5px 0;
+  }
+  #textGrille {
+    margin-left: 15px;
   }
   header {
     max-width: 750px;
     min-height: 150px;
     text-align: center;
     margin: 0 auto;
+  }
+   #msgGrille {
+    margin-left: 25px
   }
 }
 @media (min-width: 700px) {
@@ -269,13 +275,5 @@ footer {
   }
   #oups{
     font-size: 15px;
-  }
-}
-@media (min-width: 500px) {
-  .container2 {
-    margin-left: 15px
-  }
-  #msgGrille {
-    margin-left: 25px
   }
 }
