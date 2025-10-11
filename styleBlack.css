@@ -276,4 +276,7 @@ footer {
   #oups{
     font-size: 15px;
   }
+  body {
+    background-color: black;
+  }
 }
