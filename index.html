@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horaires Jean-Monnet</title>
+  <link id="themeStylesheet" rel="stylesheet" href="style.css">
+  <base href="https://school-toolsl.github.io/horaires-lycee/">
+</head>
+
+<body>
+  <div id="disclaimer">
+    <p>
+      Vous êtes hors connexion !
+      <br>
+      Les informations peuvent ne pas être à jour
+    </p>
+  </div>
+  <div id="screenSize">
+    <p id="oups">
+      Oups !
+    </p>
+    <p>
+      La largeur de votre écran est trop faible et ne peut pas supporter ce site, changez d'appareil pour accéder aux fonctionalitées du site.
+    </p>
+  </div>
+  <div id="upbar">
+    <div id="menu" style="cursor:pointer;">
+      <img src="menuClair.svg" alt="mode clair" id="iconM">
+    </div>
+    <div id="title">
+      <h1>&lt;School-Tools&gt;</h1>
+    </div>
+    <div id="QSN">
+    <a href="https://school-toolsl.github.io/horaires-lycee/QSN.html">
+      <h1>
+        Qui Sommes-Nous ?
+      </h1>
+    </a>  
+    </div>
+    <div id="divIcon" style="cursor:pointer;">
+      <img src="White-icon.svg" alt="mode clair" id="icon">
+    </div>
+  </div>
+  <header>
+    <h1>Bienvenue sur mon site !</h1>
+    <h2>Y seront affichées les horaires de grille et de sonneries du lycée Jean-Monnet en temps réel ainsi que de possibles nouvelles fonctionnalitées plus tard !</h2>
+  </header>
+  <main>
+    <div id="functions">
+    <div class="container1">
+      <div class="container2">
+        <p id="txtGrille">grille :</p>
+        <div id="cercleGrille"></div>
+        <div id="grille">chargement en cours...</div>
+      </div>
+      <div id="msgGrille" class="msg"></div>
+    </div>
+    <div class="container1">
+      <div class="container2">
+        <p>autres</p>
+        <div id="cercleAutres"></div>
+        <div id="autres">chargement en cours...</div>
+      </div>
+      <div id="msgAutres" class="msg"></div>
+    </div>
+    </div>
+    <div id="btnToDoList">
+      <button onclick="window.location.href='https://school-toolsl.github.io/horaires-lycee/to_do_list.html'">
+        Ma To-do-list
+      </button>
+    </div>
+  </main>
+  <footer id="footer">
+    <p>
+      Les informations affichées sur ce site sont fournies à titre purement informatif et peuvent être incorrectes.
+      <br>
+      Elles ne constituent en aucun cas une source officielle du lycée.
+      <br>
+      Le créateur de ce site ne saurait être tenu responsable en cas d’erreurs, de retards, d’oubli de cours ou de tout autre désagrément résultant de l’utilisation de ces informations.
+      <br>
+      Merci de vous référer aux documents et communications officielles de l’établissement pour toute information fiable et à jour.
+    </p>
+  </footer>
+  <script>
+    function mettreAJourHoraires() {
+      const maintenant = new Date();
+      const jour = maintenant.getDay();
+      const heure = maintenant.getHours();
+      const minute = maintenant.getMinutes();
+      const seconde = maintenant.getSeconds();
+      if (jour === 0 || jour === 6) {
+        outWeekend()
+      } else {
+        if (heure < 8) {
+          outMorning()
+        }
+        if (heure === 8) {
+          if (minute >= 00 && minute < 10) {
+            f8xx1();
+          } else if (minute >= 10 && minute < 25) {
+            f8xx2()
+          } else if (minute >= 25 && minute < 60) {
+            f8xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 9) {
+          if (minute >= 00 && minute < 10) {
+            f9xx1();
+          } else if (minute >= 10 && minute < 25) {
+            f9xx2()
+          } else if (minute >= 25 && minute < 60) {
+            f9xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 10) {
+          if (minute >= 00 && minute < 15) {
+            f10xx1();
+          } else if (minute >= 15 && minute < 35) {
+            f10xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f10xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 11) {
+          if (minute >= 00 && minute < 25) {
+            f11xx1();
+          } else if (minute >= 25 && minute < 35) {
+            f11xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f11xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 12) {
+          if (minute >= 00 && minute < 30) {
+            f12xx1();
+          } else if (minute >= 30 && minute < 35) {
+            f12xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f12xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 13) {
+          if (minute >= 00 && minute < 20) {
+            f13xx1();
+          } else if (minute >= 20 && minute < 30) {
+            f13xx2()
+          } else if (minute >= 30 && minute < 60) {
+            f13xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 14) {
+          if (minute >= 00 && minute < 20) {
+            f14xx1();
+          } else if (minute >= 20 && minute < 30) {
+            f14xx2()
+          } else if (minute >= 30 && minute < 60) {
+            f14xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 15) {
+          if (minute >= 00 && minute < 25) {
+            f15xx1();
+          } else if (minute >= 25 && minute < 35) {
+            f15xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f15xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 16) {
+          if (minute >= 00 && minute < 25) {
+            f16xx1();
+          } else if (minute >= 25 && minute < 35) {
+            f16xx2()
+          } else if (minute >= 35 && minute < 60) {
+            f16xx3()
+          } else {
+            error()
+          }
+        }
+        if (heure === 17) {
+          if (minute >= 00 && minute < 30) {
+            f17xx1();
+          } else if (minute >= 30 && minute < 45) {
+            f17xx2()
+          } else if (minute >= 45 && minute < 60) {
+            outNight()
+          } else {
+            error()
+          }
+        }
+        if (heure > 17) {
+          outNight()
+        }
+      }
+    }
+
+    function f8xx1() {
+      const grille =
+        document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(08, 10, "Ouvre");
+    }
+
+    function f8xx2() {
+      const grille =
+        document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(08, 25, "Ferme");
+    }
+
+    function f8xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(09, 10, "Ouvre");
+    }
+
+    function f9xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(09, 10, "Ouvre");
+    }
+
+    function f9xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(09, 25, "Ferme");
+    }
+
+    function f9xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(10, 15, "Ouvre");
+    }
+
+    function f10xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(10, 15, "Ouvre");
+    }
+
+    function f10xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(10, 35, "Ferme");
+    }
+
+    function f10xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(11, 25, "Ouvre");
+    }
+
+    function f11xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(11, 25, "Ouvre");
+    }
+
+    function f11xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(11, 35, "Ferme");
+    }
+
+    function f11xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(12, 25, "Ouvre");
+    }
+
+    function f12xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(12, 25, "Ouvre");
+    }
+
+    function f12xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(12, 35, "Ferme");
+    }
+
+    function f12xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(13, 20, "Ouvre");
+    }
+
+    function f13xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(13, 20, "Ouvre");
+    }
+
+    function f13xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(13, 30, "Ferme");
+    }
+
+    function f13xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(14, 20, "Ouvre");
+    }
+
+    function f14xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(14, 20, "Ouvre");
+    }
+
+    function f14xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(14, 30, "Ferme");
+    }
+
+    function f14xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(15, 20, "Ouvre");
+    }
+
+    function f15xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(15, 20, "Ouvre");
+    }
+
+    function f15xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(15, 35, "Ferme");
+    }
+
+    function f15xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(16, 30, "Ouvre");
+    }
+
+    function f16xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(16, 30, "Ouvre");
+    }
+
+    function f16xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(16, 35, "Ferme");
+    }
+
+    function f16xx3() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(17, 30, "Ouvre");
+    }
+
+    function f17xx1() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      startCountdown(17, 30, "Ouvre");
+    }
+
+    function f17xx2() {
+      const grille = document.getElementById("grille");
+      grille.style.color = "green";
+      grille.innerText = "ouvert";
+      changeCircle("open")
+      startCountdown(17, 45, "Ferme");
+    }
+
+    function f17xx3() {
+      outNight()
+    }
+
+    function error() {
+      const grille = document.getElementById("grille");
+      const displayElement = document.getElementById("msgGrille");
+      grille.style.color = "red";
+      grille.innerText = "erreur veuillez réessayer ultérieurment";
+      changeCircle("closed")
+      displayElement.innerText = ""
+    }
+
+    function outMorning() {
+      const grille = document.getElementById("grille");
+      const displayElement = document.getElementById("msgGrille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      displayElement.innerText = "Ouvre à 8h10"
+    }
+
+    function outWeekend() {
+      const grille = document.getElementById("grille");
+      const displayElement = document.getElementById("msgGrille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      displayElement.innerText = "Ouvre lundi à 8h10"
+    }
+
+    function outNight() {
+      const grille = document.getElementById("grille");
+      const displayElement = document.getElementById("msgGrille");
+      grille.style.color = "red";
+      grille.innerText = "fermé";
+      changeCircle("closed")
+      displayElement.innerText = "Ouvre demain à 8h10"
+    }
+    // élément cible où tu veux afficher le décompte
+    const displayElement = document.getElementById("msgGrille");
+
+    function startCountdown(targetHour, targetMinute, status) {
+      function updateTimer() {
+        const now = new Date();
+        const target = new Date();
+        target.setHours(targetHour, targetMinute, 0, 0);
+        const diff = target - now; // différence en ms
+        if (diff <= 0) {
+          clearInterval(timer);
+          return
+        }
+        const minutes = Math.floor(diff / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        displayElement.innerText =
+          status + " dans " + minutes + " minutes " + seconds + " secondes";
+        if (minutes === 0) {
+          displayElement.innerText =
+            status + " dans " + seconds + " secondes";
+          if (seconds === 0) {
+            displayElement.innerText = ""
+            return
+          }
+        }
+      }
+      updateTimer();
+      const timer = setInterval(updateTimer, 100);
+    }
+
+    function changeCircle(status) {
+      const circle = document.getElementById("cercleGrille");
+      if (status === "open") {
+        circle.style.backgroundColor = "green";
+      } else {
+        circle.style.backgroundColor = "red";
+      }
+    }
+
+    function boucleSynchro() {
+      const maintenant = new Date();
+      const msRestantes = 1000 - maintenant.getMilliseconds();
+      mettreAJourHoraires();
+      setTimeout(boucleSynchro, msRestantes);
+    }
+    const link = document.getElementById("themeStylesheet");
+    const savedStyle = localStorage.getItem("themeCSS");
+    if (savedStyle) {
+      link.setAttribute("href", savedStyle);
+      if (savedStyle === "styleBlack.css") {
+        document.getElementById("icon").src = "Black-icon.svg";
+        document.getElementById("divIcon").style.backgroundColor = "black";
+      } else {
+        document.getElementById("icon").src = "White-icon.svg";
+        document.getElementById("divIcon").style.backgroundColor = "white";
+      }
+    } else {
+      link.setAttribute("href", "style.css");
+      document.getElementById("icon").src = "White-icon.svg";
+      document.getElementById("divIcon").style.backgroundColor = "white";
+    }
+
+
+
+
+
+
+
+
+
+    function switchCSS() {
+      const link = document.getElementById("themeStylesheet");
+      if (link.getAttribute("href") === "style.css") {
+        link.setAttribute("href", "styleBlack.css");
+        document.getElementById("icon").src = "Black-icon.svg";
+        document.getElementById("divIcon").style.backgroundColor = "black";
+        localStorage.setItem("themeCSS", "styleBlack.css");
+      } else {
+        link.setAttribute("href", "style.css");
+        document.getElementById("icon").src = "White-icon.svg";
+        document.getElementById("divIcon").style.backgroundColor = "white";
+        localStorage.setItem("themeCSS", "style.css");
+      }
+    }
+    document.getElementById("divIcon").onclick = function() {
+      switchCSS()
+    };
+    // Vérifie l'accès à ping.txt
+    async function testConnexion() {
+      try {
+        const response = await fetch("ping.txt?_=" + Date.now(), {
+          method: "GET",
+          cache: "no-store"
+        });
+        if (response.ok) {
+          quandConnecte();
+          return true;
+        } else {
+          throw new Error("Réponse non OK");
+        }
+      } catch (error) {
+        quandDeconnecte();
+        return false;
+      }
+    }
+
+    function quandConnecte() {
+      document.getElementById("disclaimer").style.display = "none";
+    }
+
+    function quandDeconnecte() {
+      document.getElementById("disclaimer").style.display = "block";
+    }
+
+    function flashFooter(footerId = 'footer') {
+      // Récupération du compteur depuis localStorage
+      let footerCounter = localStorage.getItem('footerCounter');
+      footerCounter = footerCounter ? parseInt(footerCounter, 10) : 0;
+      // Incrémentation
+      footerCounter++;
+      // Si c'est l'une des trois premières visites
+      if (footerCounter <= 3) {
+        const footer = document.getElementById(footerId);
+        if (!footer) return;
+        footer.style.transition = 'background-color 0.2s';
+        const originalColor = getComputedStyle(footer).backgroundColor;
+        let flashes = 0;
+        const maxFlashes = 3;
+        const interval = setInterval(() => {
+          // Alterne entre rouge et la couleur d'origine
+          if (flashes % 2 === 0) {
+            footer.style.backgroundColor = 'red';
+          } else {
+            footer.style.backgroundColor = originalColor;
+          }
+          flashes++;
+          if (flashes >= maxFlashes * 2) {
+            clearInterval(interval);
+            footer.style.backgroundColor = originalColor; // Remet la couleur d'origine à la fin
+          }
+        }, 200);
+      }
+      // Sauvegarde du compteur
+      localStorage.setItem('footerCounter', footerCounter);
+    }
+    // Vérifie toutes les 10 secondes
+    setInterval(testConnexion, 10000);
+    // Vérifie aussi dès le chargement
+    testConnexion();
+    flashFooter(); // Appelle la fonction dès le chargement de la page
+    mettreAJourHoraires();
+    boucleSynchro();
+  </script>
+</body>
+
+</html>

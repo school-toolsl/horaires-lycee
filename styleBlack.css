@@ -1,0 +1,282 @@
+html {
+  margin: 0px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  /*overflow-y: hidden;*/
+}
+#disclaimer{
+  display: none;
+  color: white;
+  background-color: red;
+  font-size: 18px;
+  padding: 10px 0 10px 0;
+  border-radius: 0 0 10px 10px;
+  position:fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  }
+
+#disclaimer p{
+  margin: 5px;
+}
+
+#upbar{
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 77px;
+  background-color: #666666;
+  border-radius: 0 0 15px 15px;
+}
+
+#upbar #title {
+  color: #d8d8d8;
+  position: fixed
+}
+
+#upbar #QSN {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#upbar #QSN a {
+  color: white;
+  text-decoration: none;
+}
+
+#upbar #QSN a:hover {
+  text-decoration: underline;
+}
+
+#upbar #QSN a h1 {
+  padding-top: 9px;
+}
+
+#divIcon{
+  height: 40px;
+  width: 40px;
+  border-radius: 45%;
+  background-color: white;
+  margin: 10px 0 0 10px;
+  position: fixed;
+  top: 5px;
+  right: 20px;
+}
+#icon{
+  width: 90%;
+  height:90%;
+  padding: 2px 0 0 2px;
+}
+#screenSize{
+  position: fixed;
+  display: none;
+  color: red;
+}
+#oups{
+  color: rgb(79, 79, 79);
+}
+p {
+  text-align: center;
+  padding: 0 5px 0 5px;
+  margin: 10px 0 5px 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px;
+  padding: 10px 8px 0px 8px;
+  font-size: 24px;
+}
+header h1 {
+  margin-top: 97px;
+}
+
+h2 {
+  text-align: center;
+  padding: 0 8px 10px 8px;
+  font-size: 20px;
+}
+
+main {
+  flex: 1; /* prend tout l’espace dispo */
+  padding: 0 5px 0 5px;
+}
+
+.container1 {
+  font-size: 16px;
+  background-color: #666666;
+  border-radius: 10px;
+}
+
+.container2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 24px;
+  background-color: #bbbbbb;
+  border-radius: 10px;
+}
+
+.container2 p {
+  margin: 0 0 0 5px;
+  padding: 5px 0 5px 5px;
+}
+
+#cercleGrille {
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  margin: 2px 0 0 0;
+}
+
+#cercleAutres {
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  margin: 2px 0 0 0;
+}
+
+.msg {
+  margin: 1px 0 15px 10px;
+  padding-bottom: 5px
+}
+
+#msgGrille {
+  margin: 1px 0 15px 10px;
+  padding-bottom: 5px;
+  color: white;
+}
+
+footer {
+  font-size: 10px;
+  color: white;
+  border-radius: 15px 15px 0 0;
+  background-color: #666666;
+  padding: 5px 5px 5px 0;
+  margin-bottom: 0px;
+  }
+
+@media (min-width: 500px) {
+  h1 {
+    margin: 20px;
+  }
+  #functions{
+    display: flex;
+    justify-content: center;
+  }
+  .container1 {
+    width: 45%;
+    height: 100px;
+    margin: 0 10px;
+  }
+  .container2{
+    padding: 10px 0 5px 0;
+  }
+  #txtGrille {
+    margin-left: 15px;
+  }
+  header {
+    max-width: 750px;
+    min-height: 150px;
+    text-align: center;
+    margin: 0 auto;
+  }
+   #msgGrille {
+    margin-left: 25px
+  }
+}
+@media (min-width: 700px) {
+  .container1 {
+    width: 315px;
+    height: 100px;
+  }
+}
+@media (max-width: 700px) {
+  #upbar #QSN {
+    left: 200px;
+    transform: translateX(0);
+  }
+}
+@media (max-width: 550px) {
+  #QSN {
+    display: none;
+  }
+  #upbar #title{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 300px;
+  }
+  #menu {
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 25px 0 0 15px;
+    position: fixed;
+  }
+  #imgMenu {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (min-width: 550px) {
+  #menu {
+    display: none;
+  }
+}
+@media (max-width: 315px) {
+  #upbar #title {
+    transform: translateX(0);
+    left: -5px;
+  }
+  #divIcon {
+    display: none;
+  }
+  #Icon {
+    display: none;
+  }
+}
+@media (max-width: 260px) {
+  #upbar #menu {
+    display: none;
+  }
+  #upbar #title {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 239px) {
+  body > * {
+    display: none;
+  }
+  #screenSize{
+    display: block;
+    top: 200px;
+    text-align: center;
+    margin: 0 5px;
+    font-size: 12px
+  }
+  #oups{
+    font-size: 15px;
+  }
+  body {
+    background-color: black;
+  }
+}
