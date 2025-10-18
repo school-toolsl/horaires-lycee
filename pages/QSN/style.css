@@ -1,7 +1,7 @@
 html {
   margin: 0px;
 }
-*:not(#credits) {
+* {
   margin: 0;
   padding: 0;
 }
@@ -47,9 +47,6 @@ p {
 li {
   margin: 0 0 2px 0;
 }
-#credits {
-  margin: 0 0 0 5px;
-}
 footer {
   font-size: 10px;
   color: #bbbbbb;
@@ -62,3 +59,26 @@ footer {
 #link{
   color: rgb(150,150,255);
   }
+#credits p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#credits ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 40px;
+  list-style-type: disc;
+}
+#credits li {
+  margin: 0;
+  padding: 0;
+}
+footer{
+  position:fixed;
+  bottom: 0;
+  width: 100%;
+}
+footer p{
+  margin: 10px 0;
+  padding: 0;
+}
