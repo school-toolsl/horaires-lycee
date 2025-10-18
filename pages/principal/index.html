@@ -27,7 +27,7 @@
   </div>
   <div id="upbar">
     <div id="menu" style="cursor:pointer;">
-      <img src="menu.svg" alt="mode clair" id="iconM">
+      <img src="https://school-toolsl.github.io/horaires-lycee/icons/menu.svg" alt="mode clair" id="iconM">
     </div>
     <div id="title">
       <h1>&lt;School-Tools&gt;</h1>
@@ -40,7 +40,7 @@
     </a>  
     </div>
     <div id="divIcon" style="cursor:pointer;">
-      <img src="White-icon.svg" alt="mode clair" id="icon">
+      <img src="https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg" alt="mode clair" id="icon">
     </div>
   </div>
   <header>
@@ -535,15 +535,15 @@
     if (savedStyle) {
       link.setAttribute("href", savedStyle);
       if (savedStyle === "styleBlack.css") {
-        document.getElementById("icon").src = "Black-icon.svg";
+        document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/Black-icon.svg";
         document.getElementById("divIcon").style.backgroundColor = "black";
       } else {
-        document.getElementById("icon").src = "White-icon.svg";
+        document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
         document.getElementById("divIcon").style.backgroundColor = "white";
       }
     } else {
       link.setAttribute("href", "style.css");
-      document.getElementById("icon").src = "White-icon.svg";
+      document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
       document.getElementById("divIcon").style.backgroundColor = "white";
     }
 
@@ -559,12 +559,12 @@
       const link = document.getElementById("themeStylesheet");
       if (link.getAttribute("href") === "style.css") {
         link.setAttribute("href", "styleBlack.css");
-        document.getElementById("icon").src = "Black-icon.svg";
+        document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/Black-icon.svg";
         document.getElementById("divIcon").style.backgroundColor = "black";
         localStorage.setItem("themeCSS", "styleBlack.css");
       } else {
         link.setAttribute("href", "style.css");
-        document.getElementById("icon").src = "White-icon.svg";
+        document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
         document.getElementById("divIcon").style.backgroundColor = "white";
         localStorage.setItem("themeCSS", "style.css");
       }
@@ -575,7 +575,7 @@
     // Vérifie l'accès à ping.txt
     async function testConnexion() {
       try {
-        const response = await fetch("ping.txt?_=" + Date.now(), {
+        const response = await fetch("https://school-toolsl.github.io/horaires-lycee/ping.txt?_=" + Date.now(), {
           method: "GET",
           cache: "no-store"
         });
