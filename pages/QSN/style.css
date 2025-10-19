@@ -12,6 +12,41 @@ html{
 main{
   padding: 0 10px;
 }
+#upbar{
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 77px;
+  background-color: #252525;
+  border-radius: 0 0 15px 15px;
+}
+
+#upbar #title {
+  color: #c8c8c8;
+  position: fixed
+}
+
+#upbar #QSN {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#upbar #QSN a {
+  color: white;
+  text-decoration: none;
+}
+
+#upbar #QSN a:hover {
+  color: #999999;
+  text-decoration: underline;
+}
+
+#upbar #QSN a h1 {
+  padding-top: 9px;
+}
 #divIcon {
   height: 40px;
   width: 40px;
