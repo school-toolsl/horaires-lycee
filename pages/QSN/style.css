@@ -9,6 +9,9 @@ html{
   min-height: 100dvh;
   font-family: Arial, sans-serif;
 }
+main{
+  padding: 0 10px;
+}
 #divIcon {
   height: 40px;
   width: 40px;
