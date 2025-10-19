@@ -23,9 +23,23 @@ main{
   border-radius: 0 0 15px 15px;
 }
 
-#upbar #title {
+#upbar #title{
   color: #c8c8c8;
-  position: fixed
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
+}
+#menu {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  margin: 25px 0 0 15px;
+  position: fixed;
+}
+#imgMenu {
+  width: 100%;
+  height: 100%;
 }
 #divIcon {
   height: 40px;
@@ -98,4 +112,40 @@ footer{
 footer p{
   margin: 10px 0;
   padding: 0;
+}
+@media (max-width: 315px) {
+  #upbar #title {
+    transform: translateX(0);
+    left: -5px;
+  }
+  #divIcon {
+    display: none;
+  }
+  #Icon {
+    display: none;
+  }
+}
+@media (max-width: 260px) {
+  #upbar #menu {
+    display: none;
+  }
+  #upbar #title {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 239px) {
+  body > * {
+    display: none;
+  }
+  #screenSize{
+    display: block;
+    top: 200px;
+    text-align: center;
+    margin: 0 5px;
+    font-size: 12px
+  }
+  #oups{
+    font-size: 15px;
+  }
 }
