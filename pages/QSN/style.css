@@ -27,26 +27,6 @@ main{
   color: #c8c8c8;
   position: fixed
 }
-
-#upbar #QSN {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#upbar #QSN a {
-  color: white;
-  text-decoration: none;
-}
-
-#upbar #QSN a:hover {
-  color: #999999;
-  text-decoration: underline;
-}
-
-#upbar #QSN a h1 {
-  padding-top: 9px;
-}
 #divIcon {
   height: 40px;
   width: 40px;
