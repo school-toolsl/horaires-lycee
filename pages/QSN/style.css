@@ -68,6 +68,9 @@ h1{
 #title h1{
   margin: 20px;
 }
+main{
+  margin: 90px 0 0 0;
+}
 #text1, #text2{
   background-color: #252525;
   border-radius: 10px;
