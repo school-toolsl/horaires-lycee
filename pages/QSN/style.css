@@ -12,6 +12,14 @@ html{
 main{
   padding: 0 10px;
 }
+#screenSize{
+  position: fixed;
+  display: none;
+  color: red;
+}
+#oups{
+    color: white;
+  }
 #upbar{
   display: flex;
   position: fixed;
