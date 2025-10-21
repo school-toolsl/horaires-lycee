@@ -70,5 +70,41 @@
          N'hesitez pas à <a id="link" href="#">partager ce site</a> ou à le recommander à vos amis<br>Une nouvelle version PC arrive prochinement avec pleins d'autres fonctionalitées !!
       </p>
     </footer>
+    <script>
+      const link = document.getElementById("themeStylesheet");
+      const savedStyle = localStorage.getItem("themeCSS");
+      if (savedStyle) {
+        link.setAttribute("href", savedStyle);
+        if (savedStyle === "styleBlack.css") {
+          document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/Black-icon.svg";
+          document.getElementById("divIcon").style.backgroundColor = "black";
+        } else {
+          document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
+          document.getElementById("divIcon").style.backgroundColor = "white";
+        }
+      } else {
+        link.setAttribute("href", "style.css");
+        document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
+        document.getElementById("divIcon").style.backgroundColor = "white";
+      }
+
+      function switchCSS() {
+        const link = document.getElementById("themeStylesheet");
+        if (link.getAttribute("href") === "style.css") {
+          link.setAttribute("href", "styleBlack.css");
+          document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/Black-icon.svg";
+          document.getElementById("divIcon").style.backgroundColor = "black";
+          localStorage.setItem("themeCSS", "styleBlack.css");
+        } else {
+          link.setAttribute("href", "style.css");
+          document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
+          document.getElementById("divIcon").style.backgroundColor = "white";
+          localStorage.setItem("themeCSS", "style.css");
+        }
+      }
+      document.getElementById("divIcon").onclick = function() {
+        switchCSS()
+      };
+    </script>
   </body>
   </html>
