@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+  <html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui Sommes Nous ?</title>
+    <base href="https://school-toolsl.github.io/horaires-lycee/pages/QSN/">
+    <link rel="icon" href="https://school-toolsl.github.io/horaires-lycee/icons/SCHOOL_TOOLS..png">
+    <link id="themeStylesheet" rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="screenSize">
+    <p id="oups">
+      Oups !
+    </p>
+    <p>
+      La largeur de votre écran est trop faible et ne peut pas supporter ce site, changez d'appareil pour accéder aux fonctionalitées du site.
+    </p>
+  </div>
+    <header>
+      <div id="upbar">
+    <div id="menu" style="cursor:pointer;">
+      <img src="https://school-toolsl.github.io/horaires-lycee/icons/menu.svg" alt="mode clair" id="iconM">
+    </div>
+    <div id="title">
+      <h1>&lt;School-Tools&gt;</h1>
+    </div>
+    <div id="divIcon" style="cursor:pointer;">
+      <img src="https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg" alt="mode clair" id="icon">
+    </div>
+  </div>
+    </header>
+    <main>
+      <h1>Qui Sommes Nous ?</h1>
+      <div id="text1">
+        <p>
+          School-tools est un réseau de sites codés par un élève du lycée Jean-Monnet pour les élèves du lycée Jean-Monnet regroupant un système de décompte pour l'ouverture et la fermeture du portail du lycée ainsi que les horaires des sonneries, des récrés, un outil de gestion de tâches sous forme de to-do-list dynamique et bien d'autre encore...
+        </p>
+      </div>
+      <div id="text2">
+        <p>
+          La totalité des sites du réseau school-tools ont étés conçus sur téléphone et pour téléphone mais fonctionnent parfaitement sur tout type d'appareils même si l'affichage pourrait ne pas se faire correctement sur tous les appareils.<br>Une nouvelle version optimisée pour les ordinateurs devrait sortir fin octobre.
+        </p>
+      </div>
+      <div id="credits">
+        <p>
+          Credits:
+        </p>
+       <ul>
+          <li>
+            Apprentissage code: Enki
+          </li>
+          <li>
+            Débogage: Chat GPT, Copilot
+          </li>
+          <li>
+            hébergement: Github Pages
+          </li>
+          <li>
+            Codage: CodePen, VSCode
+          </li>
+          <li>
+            Ambiance Dev: Youtube Music
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer>
+      <p>
+         N'hesitez pas à <a id="link" href="#">partager ce site</a> ou à le recommander à vos amis<br>Une nouvelle version PC arrive prochinement avec pleins d'autres fonctionalitées !!
+      </p>
+    </footer>
+    <script>
+      const link = document.getElementById("themeStylesheet");
+      const savedStyle = localStorage.getItem("themeCSS");
+      if (savedStyle) {
+        link.setAttribute("href", savedStyle);
+        if (savedStyle === "styleBlack.css") {
+          document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/Black-icon.svg";
+          document.getElementById("divIcon").style.backgroundColor = "black";
+        } else {
+          document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
+          document.getElementById("divIcon").style.backgroundColor = "white";
+        }
+      } else {
+        link.setAttribute("href", "style.css");
+        document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
+        document.getElementById("divIcon").style.backgroundColor = "white";
+      }
+
+      function switchCSS() {
+        const link = document.getElementById("themeStylesheet");
+        if (link.getAttribute("href") === "style.css") {
+          link.setAttribute("href", "styleBlack.css");
+          document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/Black-icon.svg";
+          document.getElementById("divIcon").style.backgroundColor = "black";
+          localStorage.setItem("themeCSS", "styleBlack.css");
+        } else {
+          link.setAttribute("href", "style.css");
+          document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
+          document.getElementById("divIcon").style.backgroundColor = "white";
+          localStorage.setItem("themeCSS", "style.css");
+        }
+      }
+      document.getElementById("divIcon").onclick = function() {
+        switchCSS()
+      };
+    </script>
+  </body>
+  </html>
