@@ -65,6 +65,9 @@ h1{
   padding: 10px 8px 0px 8px;
   font-size: 24px;
 }
+#upbar #title {
+  margin: 20px;
+}
 #text1, #text2{
   background-color: #252525;
   border-radius: 10px;
