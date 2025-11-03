@@ -11,6 +11,20 @@
 </head>
 
 <body>
+  <aside>
+    <nav>
+      <div class="horloge">
+        <h2>Heure actuelle</h2>
+        <p id="clock">--:--:--</p>
+      </div>
+      <ul>
+        <li>Qui Sommes Nous</li>
+        <li>To-Do List</li>
+        <li>Extension productivité</li>
+      </ul>
+      <p>v1.2.63</p>
+    </nav>
+  </aside>
   <div id="disclaimer">
     <p>
       Vous êtes hors connexion !
@@ -618,6 +632,24 @@
       // Sauvegarde du compteur
       localStorage.setItem('footerCounter', footerCounter);
     }
+
+    function updateClock() {
+      const clock = document.getElementById('clock');
+      const now = new Date();
+  
+      // Format HH:MM:SS
+      const hours = String(now.getHours()).padStart(2,'0');
+      const minutes = String(now.getMinutes()).padStart(2,'0');
+      const seconds = String(now.getSeconds()).padStart(2,'0');
+
+      clock.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Met à jour chaque seconde
+    setInterval(updateClock, 1000);
+
+    // Affiche immédiatement au chargement
+    updateClock();
     // Vérifie toutes les 10 secondes
     setInterval(testConnexion, 10000);
     // Vérifie aussi dès le chargement
