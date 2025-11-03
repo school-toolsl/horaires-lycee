@@ -47,6 +47,18 @@ body {
   position: fixed
 }
 
+#menu {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  margin: 25px 0 0 15px;
+  position: fixed;
+}
+#imgMenu {
+  width: 100%;
+  height: 100%;
+}
+
 #divIcon{
   height: 40px;
   width: 40px;
