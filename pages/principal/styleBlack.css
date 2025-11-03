@@ -45,7 +45,10 @@ body {
 
 #upbar #title {
   color: #d8d8d8;
-  position: fixed
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
 }
 
 #menu {
@@ -199,25 +202,6 @@ footer {
   .container1 {
     width: 315px;
     height: 100px;
-  }
-}
-@media (max-width: 550px) {
-  #upbar #title{
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 300px;
-  }
-  #menu {
-    height: 30px;
-    width: 30px;
-    padding: 0;
-    margin: 25px 0 0 15px;
-    position: fixed;
-  }
-  #imgMenu {
-    width: 100%;
-    height: 100%;
   }
 }
 
