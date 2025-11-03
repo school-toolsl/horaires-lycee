@@ -46,25 +46,20 @@ body {
 #upbar #title {
   color: #d8d8d8;
   position: fixed
-}
-
-#upbar #QSN {
-  position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  min-width: 300px;
 }
-
-#upbar #QSN a {
-  color: white;
-  text-decoration: none;
+#menu {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  margin: 25px 0 0 15px;
+  position: fixed;
 }
-
-#upbar #QSN a:hover {
-  text-decoration: underline;
-}
-
-#upbar #QSN a h1 {
-  padding-top: 9px;
+#imgMenu {
+  width: 100%;
+  height: 100%;
 }
 
 #divIcon{
@@ -206,39 +201,6 @@ footer {
   .container1 {
     width: 315px;
     height: 100px;
-  }
-}
-@media (max-width: 700px) {
-  #upbar #QSN {
-    left: 200px;
-    transform: translateX(0);
-  }
-}
-@media (max-width: 550px) {
-  #QSN {
-    display: none;
-  }
-  #upbar #title{
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 300px;
-  }
-  #menu {
-    height: 30px;
-    width: 30px;
-    padding: 0;
-    margin: 25px 0 0 15px;
-    position: fixed;
-  }
-  #imgMenu {
-    width: 100%;
-    height: 100%;
-  }
-}
-@media (min-width: 550px) {
-  #menu {
-    display: none;
   }
 }
 @media (max-width: 315px) {
