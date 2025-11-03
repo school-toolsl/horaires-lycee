@@ -11,58 +11,55 @@
 </head>
 
 <body>
-  <div id="upfunct">
-    <div id="disclaimer">
-      <p>
-        Vous êtes hors connexion !
-        <br>
-        Les informations peuvent ne pas être à jour
-      </p>
+  <aside>
+      <nav>
+      <div class="horloge">
+      <h2>Heure actuelle</h2>
+        <p id="clock">--:--:--</p>
+      </div>
+      <ul>
+        <li>Qui Sommes Nous</li>
+        <li>To-Do List</li>
+        <li>Extension productivité</li>
+      </ul>
+      <p>v1.2.64</p>
+    </nav>
+  </aside>
+
+  <div id="disclaimer">
+    <p>
+       Vous êtes hors connexion !
+      <br>
+      Les informations peuvent ne pas être à jour
+    </p>
+   </div>
+  <div id="screenSize">
+    <p id="oups">
+      Oups !
+    </p>
+    <p>
+      La largeur de votre écran est trop faible et ne peut pas supporter ce site, changez d'appareil pour accéder aux fonctionalitées du site.
+    </p>
+  </div>
+  <div id="upbar">
+     <div id="menu" style="cursor:pointer;">
+      <img src="https://school-toolsl.github.io/horaires-lycee/icons/menu.svg" alt="mode clair" id="iconM">
     </div>
-    <div id="screenSize">
-      <p id="oups">
-        Oups !
-      </p>
-      <p>
-        La largeur de votre écran est trop faible et ne peut pas supporter ce site, changez d'appareil pour accéder aux fonctionalitées du site.
-      </p>
+    <div id="title">
+      <a href="https://school-toolsl.github.io/horaires-lycee/pages/principal/index.html">
+        <h1>&lt;School-Tools&gt;</h1>
+      </a>
+    </div>
+    <div id="divIcon" style="cursor:pointer;">
+      <img src="https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg" alt="mode clair" id="icon">
     </div>
   </div>
-  <div id="screen">
-    <aside>
-      <nav>
-        <div class="horloge">
-          <h2>Heure actuelle</h2>
-          <p id="clock">--:--:--</p>
-        </div>
-        <ul>
-          <li>Qui Sommes Nous</li>
-          <li>To-Do List</li>
-          <li>Extension productivité</li>
-        </ul>
-        <p>v1.2.64</p>
-      </nav>
-    </aside>
-    <div id="downfunct"></div>
-      <div id="upbar">
-        <div id="menu" style="cursor:pointer;">
-          <img src="https://school-toolsl.github.io/horaires-lycee/icons/menu.svg" alt="mode clair" id="iconM">
-        </div>
-        <div id="title">
-          <a href="https://school-toolsl.github.io/horaires-lycee/pages/principal/index.html">
-            <h1>&lt;School-Tools&gt;</h1>
-          </a>
-        </div>
-        <div id="divIcon" style="cursor:pointer;">
-          <img src="https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg" alt="mode clair" id="icon">
-        </div>
-      </div>
-      <header>
-        <h1>Bienvenue sur mon site !</h1>
-        <h2>Y seront affichées les horaires de grille et de sonneries du lycée Jean-Monnet en temps réel ainsi que de possibles nouvelles fonctionnalitées plus tard !</h2>
-      </header>
-      <main>
-        <div id="functions">
+  <header>
+    <h1>Bienvenue sur mon site !</h1>
+    <h2>Y seront affichées les horaires de grille et de sonneries du lycée Jean-Monnet en temps réel ainsi que de possibles nouvelles fonctionnalitées plus tard !</h2>
+  </header>
+  <main>
+      <div id="functions">
         <div class="container1">
           <div class="container2">
             <p id="txtGrille">grille :</p>
@@ -97,7 +94,7 @@
         </p>
       </footer>
     </div>
-  </div>
+  
   <script>
     function mettreAJourHoraires() {
       const maintenant = new Date();
