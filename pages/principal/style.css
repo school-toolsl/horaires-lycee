@@ -250,6 +250,9 @@ footer {
     margin: 0 5px;
     font-size: 12px
   }
+  #menu{
+    display: none;
+  }
   #oups{
     font-size: 15px;
   }
