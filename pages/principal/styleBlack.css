@@ -92,6 +92,13 @@ aside{
 #horloge p {
   font-size: 30px;
 }
+nav ul{
+  margin: 40px 0 0 0;
+}
+ul li{
+  margin-bottom: 10px;
+}
+
 
 #screenSize{
   position: fixed;
