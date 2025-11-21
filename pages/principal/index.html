@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <aside>
+  <aside id="sidebar">
     <nav>
       <div id="horloge">
         <h2>Heure actuelle</h2>
@@ -579,12 +579,12 @@
 
     let status = "closed";  // variable globale qui garde l'état
     function open_closeMenu() {
-      const menu = document.getElementById("menu");
+      const sidebar = document.getElementById("sidebar");
       if (status === "closed") {
-        menu.style.display = "block";
+        sidebar.style.display = "block";
         status = "open";  // on met à jour l'état
       } else {
-        menu.style.display = "none";
+        sidebar.style.display = "none";
         status = "closed"; // on met à jour l'état
       }
     }
