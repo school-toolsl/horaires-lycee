@@ -576,6 +576,23 @@
     document.getElementById("divIcon").onclick = function() {
       switchCSS()
     };
+
+    let status = "closed";  // variable globale qui garde l'état
+    function open_closeMenu() {
+      const menu = document.getElementById("menu");
+      if (status === "closed") {
+        menu.style.display = "block";
+        status = "open";  // on met à jour l'état
+      } else {
+        menu.style.display = "none";
+        status = "closed"; // on met à jour l'état
+      }
+    }
+    document.getElementById("menu").onclick = function() {
+      open_closeMenu();
+    };
+
+
     // Vérifie l'accès à ping.txt
     async function testConnexion() {
       try {
