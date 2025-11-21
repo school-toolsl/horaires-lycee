@@ -41,10 +41,10 @@
       La largeur de votre écran est trop faible et ne peut pas supporter ce site, changez d'appareil pour accéder aux fonctionalitées du site.
     </p>
   </div>
-  <div id="upbar">
-     <div id="menu" style="cursor:pointer;">
+  <div id="menu" style="cursor:pointer;">
       <img src="https://school-toolsl.github.io/horaires-lycee/icons/menu.svg" alt="mode clair" id="iconM">
-    </div>
+  </div>
+  <div id="upbar">
     <div id="title">
       <a href="https://school-toolsl.github.io/horaires-lycee/pages/principal/index.html">
         <h1>&lt;School-Tools&gt;</h1>
@@ -580,12 +580,15 @@
     let status = "closed";  // variable globale qui garde l'état
     function open_closeMenu() {
       const sidebar = document.getElementById("sidebar");
+      const menu = document.getElementById("menu");
       if (status === "closed") {
         sidebar.style.display = "block";
-        status = "open";  // on met à jour l'état
+        status = "open";  
+        menu.style.display = "";
       } else {
         sidebar.style.display = "none";
-        status = "closed"; // on met à jour l'état
+        status = "closed"; 
+        menu.style.display = "";
       }
     }
     document.getElementById("menu").onclick = function() {
