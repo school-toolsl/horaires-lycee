@@ -50,6 +50,10 @@ body {
   min-width: 300px;
 }
 
+#title a{
+  color: #c8c8c8;
+}
+
 #menu {
   height: 30px;
   width: 30px;
@@ -98,6 +102,9 @@ nav ul{
 }
 ul li{
   margin-bottom: 10px;
+}
+nav ul li a{
+  color: white;
 }
 #version{
   position: fixed;
