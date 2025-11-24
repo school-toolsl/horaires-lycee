@@ -71,11 +71,11 @@
         </div>
         <div class="container1">
           <div class="container2">
-            <p>autres</p>
+            <p id="txtStatut">statut :</p>
             <div id="cercleAutres"></div>
-            <div id="autres">chargement en cours...</div>
+            <div id="statut">chargement en cours...</div>
           </div>
-          <div id="msgAutres" class="msg"></div>
+          <div id="msgStatut" class="msg"></div>
         </div>
         <div id="btnToDoList">
           <button onclick="window.location.href='https://school-toolsl.github.io/horaires-lycee/to_do_list.html'">
@@ -528,6 +528,10 @@
       const timer = setInterval(updateTimer, 100);
     }
 
+    function MettreAJourStatut{
+      
+    }
+
     function changeCircle(status) {
       const circle = document.getElementById("cercleGrille");
       if (status === "open") {
@@ -668,17 +672,13 @@
       clock.textContent = `${hours}:${minutes}:${seconds}`;
     }
 
-    // Met à jour chaque seconde
     setInterval(updateClock, 1000);
-
-    // Affiche immédiatement au chargement
     updateClock();
-    // Vérifie toutes les 10 secondes
     setInterval(testConnexion, 10000);
-    // Vérifie aussi dès le chargement
     testConnexion();
-    flashFooter(); // Appelle la fonction dès le chargement de la page
+    flashFooter();
     mettreAJourHoraires();
+    mettreAJourStatut();
     boucleSynchro();
   </script>
 </body>
