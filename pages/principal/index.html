@@ -7,13 +7,29 @@
   <title>Horaires Jean-Monnet</title>
   <link id="themeStylesheet" rel="stylesheet" href="style.css">
   <link rel="icon" href="https://school-toolsl.github.io/horaires-lycee/icons/SCHOOL_TOOLS..png">
-  <base href="https://school-toolsl.github.io/horaires-lycee/pages/principal/">
+  <base href="https://school-toolsl.github.io/horaires-lycee/pages/principal/" target="_self">
 </head>
 
 <body>
+  <aside id="sidebar">
+    <nav>
+      <div id="horloge">
+        <h2>Heure actuelle</h2>
+        <p id="clock">--:--:--</p>
+      </div>
+      <ul>
+        <li><a href="https://school-toolsl.github.io/horaires-lycee/pages/QSN/index.html">Qui Sommes Nous</a></li>
+        <!--<li>To-Do List</li>
+        <li>Extension productivité</li>-->
+        <li><a href="https://github.com/school-toolsl/horaires-lycee/discussions/new?category=ideas">Proposer une nouvelle <br>mise à jour</a></li>
+      </ul>
+      <p id="version">v1.2.64.2</p>
+    </nav>
+  </aside>
+
   <div id="disclaimer">
     <p>
-      Vous êtes hors connexion !
+       Vous êtes hors connexion !
       <br>
       Les informations peuvent ne pas être à jour
     </p>
@@ -26,19 +42,14 @@
       La largeur de votre écran est trop faible et ne peut pas supporter ce site, changez d'appareil pour accéder aux fonctionalitées du site.
     </p>
   </div>
-  <div id="upbar">
-    <div id="menu" style="cursor:pointer;">
+  <div id="menu" style="cursor:pointer;">
       <img src="https://school-toolsl.github.io/horaires-lycee/icons/menu.svg" alt="mode clair" id="iconM">
-    </div>
+  </div>
+  <div id="upbar">
     <div id="title">
-      <h1>&lt;School-Tools&gt;</h1>
-    </div>
-    <div id="QSN">
-    <a href="https://school-toolsl.github.io/horaires-lycee/pages/QSN/index.html">
-      <h1>
-        Qui Sommes-Nous ?
-      </h1>
-    </a>  
+      <a href="https://school-toolsl.github.io/horaires-lycee/pages/principal/index.html">
+        <h1>&lt;School-Tools&gt;</h1>
+      </a>
     </div>
     <div id="divIcon" style="cursor:pointer;">
       <img src="https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg" alt="mode clair" id="icon">
@@ -49,41 +60,42 @@
     <h2>Y seront affichées les horaires de grille et de sonneries du lycée Jean-Monnet en temps réel ainsi que de possibles nouvelles fonctionnalitées plus tard !</h2>
   </header>
   <main>
-    <div id="functions">
-    <div class="container1">
-      <div class="container2">
-        <p id="txtGrille">grille :</p>
-        <div id="cercleGrille"></div>
-        <div id="grille">chargement en cours...</div>
+      <div id="functions">
+        <div class="container1">
+          <div class="container2">
+            <p id="txtGrille">grille :</p>
+            <div id="cercleGrille"></div>
+            <div id="grille">chargement en cours...</div>
+          </div>
+          <div id="msgGrille" class="msg"></div>
+        </div>
+        <div class="container1">
+          <div class="container2">
+            <p>autres</p>
+            <div id="cercleAutres"></div>
+            <div id="autres">chargement en cours...</div>
+          </div>
+          <div id="msgAutres" class="msg"></div>
+        </div>
+        <div id="btnToDoList">
+          <button onclick="window.location.href='https://school-toolsl.github.io/horaires-lycee/to_do_list.html'">
+            Ma To-do-list
+          </button>
+        </div>
       </div>
-      <div id="msgGrille" class="msg"></div>
-    </div>
-    <div class="container1">
-      <div class="container2">
-        <p>autres</p>
-        <div id="cercleAutres"></div>
-        <div id="autres">chargement en cours...</div>
-      </div>
-      <div id="msgAutres" class="msg"></div>
-    </div>
-    </div>
-    <div id="btnToDoList">
-      <button onclick="window.location.href='https://school-toolsl.github.io/horaires-lycee/to_do_list.html'">
-        Ma To-do-list
-      </button>
-    </div>
-  </main>
-  <footer id="footer">
-    <p>
-      Les informations affichées sur ce site sont fournies à titre purement informatif et peuvent être incorrectes.
-      <br>
-      Elles ne constituent en aucun cas une source officielle du lycée.
-      <br>
-      Le créateur de ce site ne saurait être tenu responsable en cas d’erreurs, de retards, d’oubli de cours ou de tout autre désagrément résultant de l’utilisation de ces informations.
-      <br>
-      Merci de vous référer aux documents et communications officielles de l’établissement pour toute information fiable et à jour.
-    </p>
-  </footer>
+    </main>
+    <footer id="footer">
+      <p>
+        Les informations affichées sur ce site sont fournies à titre purement informatif et peuvent être incorrectes.
+        <br>
+        Elles ne constituent en aucun cas une source officielle du lycée.
+        <br>
+        Le créateur de ce site ne saurait être tenu responsable en cas d’erreurs, de retards, d’oubli de cours ou de tout autre désagrément résultant de l’utilisation de ces informations.
+        <br>
+        Merci de vous référer aux documents et communications officielles de l’établissement pour toute information fiable et à jour.
+      </p>
+    </footer>
+  
   <script>
     function mettreAJourHoraires() {
       const maintenant = new Date();
@@ -565,6 +577,26 @@
     document.getElementById("divIcon").onclick = function() {
       switchCSS()
     };
+
+    let status = "closed";  // variable globale qui garde l'état
+    function open_closeMenu() {
+      const sidebar = document.getElementById("sidebar");
+      const menu = document.getElementById("menu");
+      if (status === "closed") {
+        sidebar.style.display = "block";
+        status = "open";  
+        menu.style.margin = "25px 0 0 200px";
+      } else {
+        sidebar.style.display = "none";
+        status = "closed"; 
+        menu.style.margin = "25px 0 0 15px";
+      }
+    }
+    document.getElementById("menu").onclick = function() {
+      open_closeMenu();
+    };
+
+
     // Vérifie l'accès à ping.txt
     async function testConnexion() {
       try {
@@ -623,6 +655,24 @@
       // Sauvegarde du compteur
       localStorage.setItem('footerCounter', footerCounter);
     }
+
+    function updateClock() {
+      const clock = document.getElementById('clock');
+      const now = new Date();
+  
+      // Format HH:MM:SS
+      const hours = String(now.getHours()).padStart(2,'0');
+      const minutes = String(now.getMinutes()).padStart(2,'0');
+      const seconds = String(now.getSeconds()).padStart(2,'0');
+
+      clock.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Met à jour chaque seconde
+    setInterval(updateClock, 1000);
+
+    // Affiche immédiatement au chargement
+    updateClock();
     // Vérifie toutes les 10 secondes
     setInterval(testConnexion, 10000);
     // Vérifie aussi dès le chargement

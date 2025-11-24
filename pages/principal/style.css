@@ -44,28 +44,29 @@ body {
 
 #upbar #title {
   color: #c8c8c8;
-  position: fixed
-}
-
-#upbar #QSN {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  min-width: 300px;
 }
 
-#upbar #QSN a {
-  color: white;
-  text-decoration: none;
+#title a{
+  color: #c8c8c8;
 }
 
-#upbar #QSN a:hover {
-  color: #999999;
-  text-decoration: underline;
+#menu {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  margin: 25px 0 0 15px;
+  position: fixed;
+  z-index: 9998;
+}
+#imgMenu {
+  width: 100%;
+  height: 100%;
 }
 
-#upbar #QSN a h1 {
-  padding-top: 9px;
-}
 #divIcon{
   height: 40px;
   width: 40px;
@@ -81,6 +82,38 @@ body {
   height:90%;
   padding: 2px 0 0 2px;
 }
+
+aside{
+  position: fixed;
+  background-color: #333333;
+  border-radius: 0 15px 15px 0;
+  z-index: 9997;
+  height: 100%;
+  display: none;
+}
+#horloge h2{
+  margin: 40px 0 0 0;
+}
+#horloge p {
+  font-size: 30px;
+}
+nav ul{
+  margin: 40px 30px 10px 0;
+}
+ul li{
+  margin-bottom: 10px;
+}
+nav ul li a{
+  color: white;
+}
+#version{
+  position: fixed;
+  bottom: 30px;
+  left: 70px
+}
+
+
+
 #screenSize{
   position: fixed;
   display: none;
@@ -207,39 +240,6 @@ footer {
     height: 100px;
   }
 }
-@media (max-width: 700px) {
-  #upbar #QSN {
-    left: 200px;
-    transform: translateX(0);
-  }
-}
-@media (max-width: 550px) {
-  #QSN {
-    display: none;
-  }
-  #upbar #title{
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 300px;
-  }
-  #menu {
-    height: 30px;
-    width: 30px;
-    padding: 0;
-    margin: 25px 0 0 15px;
-    position: fixed;
-  }
-  #imgMenu {
-    width: 100%;
-    height: 100%;
-  }
-}
-@media (min-width: 550px) {
-  #menu {
-    display: none;
-  }
-}
 @media (max-width: 315px) {
   #upbar #title {
     transform: translateX(0);
@@ -253,12 +253,12 @@ footer {
   }
 }
 @media (max-width: 260px) {
-  #upbar #menu {
-    display: none;
-  }
   #upbar #title {
     left: 50%;
     transform: translateX(-50%);
+  }
+  #menu{
+    display: none;
   }
 }
 @media (max-width: 239px) {
@@ -271,6 +271,9 @@ footer {
     text-align: center;
     margin: 0 5px;
     font-size: 12px
+  }
+  #menu{
+    display: none;
   }
   #oups{
     font-size: 15px;

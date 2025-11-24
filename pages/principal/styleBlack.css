@@ -45,17 +45,23 @@ body {
 
 #upbar #title {
   color: #d8d8d8;
-  position: fixed
+  position: fixed;
   left: 50%;
   transform: translateX(-50%);
   min-width: 300px;
 }
+
+#title a{
+  color: #c8c8c8;
+}
+
 #menu {
   height: 30px;
   width: 30px;
   padding: 0;
   margin: 25px 0 0 15px;
   position: fixed;
+  z-index: 9998;
 }
 #imgMenu {
   width: 100%;
@@ -77,6 +83,38 @@ body {
   height:90%;
   padding: 2px 0 0 2px;
 }
+
+aside{
+  position: fixed;
+  background-color: #555555;
+  border-radius: 0 15px 15px 0;
+  z-index: 9997;
+  height: 100%;
+  display: none;
+  color: white;
+}
+#horloge h2{
+  margin: 40px 0 0 0;
+}
+#horloge p {
+  font-size: 30px;
+}
+nav ul{
+  margin: 40px 30px 10px 0;
+}
+ul li{
+  margin-bottom: 10px;
+}
+nav ul li a{
+  color: white;
+}
+#version{
+  position: fixed;
+  bottom: 30px;
+  left: 70px
+}
+
+
 #screenSize{
   position: fixed;
   display: none;
@@ -203,6 +241,7 @@ footer {
     height: 100px;
   }
 }
+
 @media (max-width: 315px) {
   #upbar #title {
     transform: translateX(0);
@@ -216,9 +255,6 @@ footer {
   }
 }
 @media (max-width: 260px) {
-  #upbar #menu {
-    display: none;
-  }
   #upbar #title {
     left: 50%;
     transform: translateX(-50%);
@@ -235,8 +271,12 @@ footer {
     margin: 0 5px;
     font-size: 12px
   }
+  #menu{
+    display: none;
+  }
   #oups{
     font-size: 15px;
+    color: white;
   }
   body {
     background-color: black;
