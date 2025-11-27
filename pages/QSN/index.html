@@ -123,6 +123,38 @@
       document.getElementById("divIcon").onclick = function() {
         switchCSS()
       };
+      let status = "closed";  // variable globale qui garde l'état
+      function open_closeMenu() {
+        const sidebar = document.getElementById("sidebar");
+        const menu = document.getElementById("menu");
+        if (status === "closed") {
+          sidebar.style.display = "block";
+          status = "open";  
+          menu.style.margin = "25px 0 0 200px";
+        } else {
+          sidebar.style.display = "none";
+          status = "closed"; 
+          menu.style.margin = "25px 0 0 15px";
+        }
+      }
+      document.getElementById("menu").onclick = function() {
+        open_closeMenu();
+      };
+
+      function updateClock() {
+        const clock = document.getElementById('clock');
+        const now = new Date();
+    
+        // Format HH:MM:SS
+        const hours = String(now.getHours()).padStart(2,'0');
+        const minutes = String(now.getMinutes()).padStart(2,'0');
+        const seconds = String(now.getSeconds()).padStart(2,'0');
+  
+        clock.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      setInterval(updateClock, 1000);
+      updateClock();
     </script>
   </body>
   </html>
