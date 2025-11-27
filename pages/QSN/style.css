@@ -17,6 +17,34 @@ main{
   display: none;
   color: red;
 }
+aside{
+  position: fixed;
+  background-color: #333333;
+  border-radius: 0 15px 15px 0;
+  z-index: 9997;
+  height: 100%;
+  display: none;
+}
+#horloge h2{
+  margin: 40px 0 0 0;
+}
+#horloge p {
+  font-size: 30px;
+}
+nav ul{
+  margin: 40px 30px 10px 0;
+}
+ul li{
+  margin-bottom: 10px;
+}
+nav ul li a{
+  color: white;
+}
+#version{
+  position: fixed;
+  bottom: 30px;
+  left: 70px
+}
 #oups{
     color: white;
   }
