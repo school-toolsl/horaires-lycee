@@ -73,11 +73,13 @@ nav ul li a{
   color: #c8c8c8;
 }
 #menu {
+  position: fixed;
+  top: 0;
   height: 30px;
   width: 30px;
   padding: 0;
   margin: 25px 0 0 15px;
-  position: fixed;
+  z-index: 9999;
 }
 #imgMenu {
   width: 100%;
