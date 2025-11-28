@@ -725,7 +725,7 @@
     function boucleSynchro() {
       const maintenant = new Date();
       const msRestantes = 1000 - maintenant.getMilliseconds();
-      mettreAJourHoraires();
+      MettreAJourHoraires();
       setTimeout(boucleSynchro, msRestantes);
     }
     const link = document.getElementById("themeStylesheet");
