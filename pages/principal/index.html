@@ -498,12 +498,11 @@
       changeCircle("closed")
       displayElement.innerText = "Ouvre demain à 8h10"
     }
-    // élément cible où tu veux afficher le décompte
-    const displayElement = document.getElementById("msgGrille");
 
     function startCountdown(targetHour, targetMinute, status) {
       function updateTimer() {
         const now = new Date();
+        const displayElement = document.getElementById("msgGrille");
         const target = new Date();
         target.setHours(targetHour, targetMinute, 0, 0);
         const diff = target - now; // différence en ms
@@ -528,10 +527,6 @@
       const timer = setInterval(updateTimer, 100);
     }
 
-    function MettreAJourStatut{
-      
-    }
-
     function changeCircle(status) {
       const circle = document.getElementById("cercleGrille");
       if (status === "open") {
@@ -541,6 +536,146 @@
       }
     }
 
+
+
+
+
+
+
+
+
+    /*change system*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let late = 1;
+
+    function MettreAJourStatut{
+      const maintenant = new Date();
+      const jour = maintenant.getDay();
+      const heure = maintenant.getHours();
+      const minute = maintenant.getMinutes();
+      const seconde = maintenant.getSeconds();
+      if (jour === 0 || jour === 6){
+        statutWeekend()
+      }
+      if (heure <= 8 && minute <= 25){
+        const statut = document.getElementById("statut");
+        const displayElement = document.getElementById("msgStatut");
+        statut.style.color = "green";
+        statut.innerText = "";
+        changeCircleStatut("open")
+        startCountdownStatut(8, 25, "Sonne");
+      }
+
+      if (heure == 8 && minute == (25+late)){
+        sonnerie()
+      }
+      if (heure == 9 && minute == (20+late)){
+        sonnerie()
+      }else if (minute == (25+late)){
+        sonnerie()
+      }
+      if (heure == 10 && minute == (15+late)){
+        sonnerie()
+      }else if (minute == (35+late)){
+        sonnerie()
+      }
+      if (heure == 11 && minute == (25+late)){
+        sonnerie()
+      }else if (minute == (35+late)){
+        sonnerie()
+      }
+      if (heure == 12 && minute == (25+late)){
+        sonnerie()
+      }else if (minute == (35+late)){
+        sonnerie()
+      }
+      if (heure == 13 && minute == (20+late)){
+        sonnerie()
+      }else if (minute == (30+late)){
+        sonnerie()
+      }
+
+
+    }
+    statutWeekend(){
+      const statut = document.getElementById("statut");
+      const displayElement = document.getElementById("msgStatut");
+      statut.style.color = "red";
+      statut.innerText = "fermé";
+      changeCircleStatut("closed")
+      displayElement.innerText = "Weekend"
+    }
+    
+    sonnerie(){
+      const statut = document.getElementById("statut");
+      const displayElement = document.getElementById("msgStatut");
+      statut.style.color = "green";
+      statut.innerText = "sonnerie";
+      changeCircleStatut("closed")
+      displayElement.innerText = "Weekend"
+    }
+
+    function changeCircleStatut(status) {
+      const circle = document.getElementById("cercleStatut");
+      if (status === "open") {
+        circle.style.backgroundColor = "green";
+      } else {
+        circle.style.backgroundColor = "red";
+      }
+    }
+
+    function startCountdownStatut(targetHour, targetMinute, status) {
+      function updateTimerStatut() {
+        const now = new Date();
+        const displayElement = document.getElementById("msgStatut");
+        const target = new Date();
+        target.setHours(targetHour, targetMinute, 0, 0);
+        const diff = target - now; // différence en ms
+        if (diff <= 0) {
+          clearInterval(timer);
+          return
+        }
+        const minutes = Math.floor(diff / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        displayElement.innerText =
+          status + " dans " + minutes + " minutes " + seconds + " secondes";
+        if (minutes === 0) {
+          displayElement.innerText =
+            status + " dans " + seconds + " secondes";
+          if (seconds === 0) {
+            displayElement.innerText = ""
+            return
+          }
+        }
+      }
+      updateTimerStatut();
+      const timer = setInterval(updateTimerStatut, 100);
+    }
+
+    
+    
+    
+    /*out code*/
+
+
+    
+    
+    
+    
+    
+    
     function boucleSynchro() {
       const maintenant = new Date();
       const msRestantes = 1000 - maintenant.getMilliseconds();
