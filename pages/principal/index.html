@@ -569,6 +569,7 @@
       const seconde = maintenant.getSeconds();
       if (jour === 0 || jour === 6){
         statutWeekend()
+        return
       }
       if (heure <= 8 && minute <= 25){
         const statut = document.getElementById("statut");
@@ -582,7 +583,7 @@
         const statut = document.getElementById("statut");
         const displayElement = document.getElementById("msgStatut");
         statut.style.color = "green";
-        statut.innerText = "Fin de la journée";
+        statut.innerText = "fin de la journée";
         changeCircleStatut("open")
         displayElement.innerText = "Bonne soirée !";
       }
