@@ -190,7 +190,7 @@ main {
   color: white;
 }
 
-#cercleAutres {
+#cercleStatut {
   width: 8px;
   height: 8px;
   background-color: red;
@@ -198,7 +198,7 @@ main {
   margin: 2px 0 0 0;
 }
 
-#msgGrille {
+#msgStatut {
   margin: 1px 0 15px 10px;
   padding-bottom: 5px;
   color: white;
