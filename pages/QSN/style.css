@@ -46,7 +46,7 @@ nav ul li a{
 #version{
   position: fixed;
   bottom: 30px;
-  left: 70px
+  left: 65px;
 }
 #oups{
     color: white;
