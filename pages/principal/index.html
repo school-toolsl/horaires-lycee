@@ -98,693 +98,471 @@
       </p>
     </footer>
   
-  <script>
-    function MettreAJourHoraires() {
-      const maintenant = new Date();
-      const jour = maintenant.getDay();
-      const heure = maintenant.getHours();
-      const minute = maintenant.getMinutes();
-      const seconde = maintenant.getSeconds();
-      if (jour === 0 || jour === 6) {
-        outWeekend()
+
+    <script>
+  // Etats globaux (strings) et configuration
+  let statutState = "none";
+  let late = 1;
+
+  function MettreAJourHoraires() {
+    const maintenant = new Date();
+    const jour = maintenant.getDay();
+    const heure = maintenant.getHours();
+    const minute = maintenant.getMinutes();
+
+    if (jour === 0 || jour === 6) {
+      outWeekend();
+      return;
+    }
+
+    if (heure < 8) {
+      outMorning();
+      return;
+    }
+
+    // plages horaires (remplacé 08 par 8 etc.)
+    if (heure === 8) {
+      if (minute >= 0 && minute < 10) {
+        f8xx1();
+      } else if (minute >= 10 && minute < 25) {
+        f8xx2();
+      } else if (minute >= 25 && minute < 60) {
+        f8xx3();
       } else {
-        if (heure < 8) {
-          outMorning()
-        }
-        if (heure === 8) {
-          if (minute >= 00 && minute < 10) {
-            f8xx1();
-          } else if (minute >= 10 && minute < 25) {
-            f8xx2()
-          } else if (minute >= 25 && minute < 60) {
-            f8xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 9) {
-          if (minute >= 00 && minute < 10) {
-            f9xx1();
-          } else if (minute >= 10 && minute < 25) {
-            f9xx2()
-          } else if (minute >= 25 && minute < 60) {
-            f9xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 10) {
-          if (minute >= 00 && minute < 15) {
-            f10xx1();
-          } else if (minute >= 15 && minute < 35) {
-            f10xx2()
-          } else if (minute >= 35 && minute < 60) {
-            f10xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 11) {
-          if (minute >= 00 && minute < 25) {
-            f11xx1();
-          } else if (minute >= 25 && minute < 35) {
-            f11xx2()
-          } else if (minute >= 35 && minute < 60) {
-            f11xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 12) {
-          if (minute >= 00 && minute < 30) {
-            f12xx1();
-          } else if (minute >= 30 && minute < 35) {
-            f12xx2()
-          } else if (minute >= 35 && minute < 60) {
-            f12xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 13) {
-          if (minute >= 00 && minute < 20) {
-            f13xx1();
-          } else if (minute >= 20 && minute < 30) {
-            f13xx2()
-          } else if (minute >= 30 && minute < 60) {
-            f13xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 14) {
-          if (minute >= 00 && minute < 20) {
-            f14xx1();
-          } else if (minute >= 20 && minute < 30) {
-            f14xx2()
-          } else if (minute >= 30 && minute < 60) {
-            f14xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 15) {
-          if (minute >= 00 && minute < 25) {
-            f15xx1();
-          } else if (minute >= 25 && minute < 35) {
-            f15xx2()
-          } else if (minute >= 35 && minute < 60) {
-            f15xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 16) {
-          if (minute >= 00 && minute < 25) {
-            f16xx1();
-          } else if (minute >= 25 && minute < 35) {
-            f16xx2()
-          } else if (minute >= 35 && minute < 60) {
-            f16xx3()
-          } else {
-            error()
-          }
-        }
-        if (heure === 17) {
-          if (minute >= 00 && minute < 30) {
-            f17xx1();
-          } else if (minute >= 30 && minute < 45) {
-            f17xx2()
-          } else if (minute >= 45 && minute < 60) {
-            outNight()
-          } else {
-            error()
-          }
-        }
-        if (heure > 17) {
-          outNight()
-        }
+        error();
       }
+      return;
     }
 
-    function f8xx1() {
-      const grille =
-        document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(08, 10, "Ouvre");
-    }
-
-    function f8xx2() {
-      const grille =
-        document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(08, 25, "Ferme");
-    }
-
-    function f8xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(09, 10, "Ouvre");
-    }
-
-    function f9xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(09, 10, "Ouvre");
-    }
-
-    function f9xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(09, 25, "Ferme");
-    }
-
-    function f9xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(10, 15, "Ouvre");
-    }
-
-    function f10xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(10, 15, "Ouvre");
-    }
-
-    function f10xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(10, 35, "Ferme");
-    }
-
-    function f10xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(11, 25, "Ouvre");
-    }
-
-    function f11xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(11, 25, "Ouvre");
-    }
-
-    function f11xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(11, 35, "Ferme");
-    }
-
-    function f11xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(12, 25, "Ouvre");
-    }
-
-    function f12xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(12, 25, "Ouvre");
-    }
-
-    function f12xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(12, 35, "Ferme");
-    }
-
-    function f12xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(13, 20, "Ouvre");
-    }
-
-    function f13xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(13, 20, "Ouvre");
-    }
-
-    function f13xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(13, 30, "Ferme");
-    }
-
-    function f13xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(14, 20, "Ouvre");
-    }
-
-    function f14xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(14, 20, "Ouvre");
-    }
-
-    function f14xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(14, 30, "Ferme");
-    }
-
-    function f14xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(15, 20, "Ouvre");
-    }
-
-    function f15xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(15, 20, "Ouvre");
-    }
-
-    function f15xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(15, 35, "Ferme");
-    }
-
-    function f15xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(16, 30, "Ouvre");
-    }
-
-    function f16xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(16, 30, "Ouvre");
-    }
-
-    function f16xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(16, 35, "Ferme");
-    }
-
-    function f16xx3() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(17, 30, "Ouvre");
-    }
-
-    function f17xx1() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      startCountdown(17, 30, "Ouvre");
-    }
-
-    function f17xx2() {
-      const grille = document.getElementById("grille");
-      grille.style.color = "green";
-      grille.innerText = "ouvert";
-      changeCircle("open")
-      startCountdown(17, 45, "Ferme");
-    }
-
-    function f17xx3() {
-      outNight()
-    }
-
-    function error() {
-      const grille = document.getElementById("grille");
-      const displayElement = document.getElementById("msgGrille");
-      grille.style.color = "red";
-      grille.innerText = "erreur veuillez réessayer ultérieurment";
-      changeCircle("closed")
-      displayElement.innerText = ""
-    }
-
-    function outMorning() {
-      const grille = document.getElementById("grille");
-      const displayElement = document.getElementById("msgGrille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      displayElement.innerText = "Ouvre à 8h10"
-    }
-
-    function outWeekend() {
-      const grille = document.getElementById("grille");
-      const displayElement = document.getElementById("msgGrille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      displayElement.innerText = "Ouvre lundi à 8h10"
-    }
-
-    function outNight() {
-      const grille = document.getElementById("grille");
-      const displayElement = document.getElementById("msgGrille");
-      grille.style.color = "red";
-      grille.innerText = "fermé";
-      changeCircle("closed")
-      displayElement.innerText = "Ouvre demain à 8h10"
-    }
-
-    function startCountdown(targetHour, targetMinute, status) {
-      function updateTimer() {
-        const now = new Date();
-        const displayElement = document.getElementById("msgGrille");
-        const target = new Date();
-        target.setHours(targetHour, targetMinute, 0, 0);
-        const diff = target - now; // différence en ms
-        if (diff <= 0) {
-          clearInterval(timer);
-          return
-        }
-        const minutes = Math.floor(diff / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        displayElement.innerText =
-          status + " dans " + minutes + " minutes " + seconds + " secondes";
-        if (minutes === 0) {
-          displayElement.innerText =
-            status + " dans " + seconds + " secondes";
-          if (seconds === 0) {
-            displayElement.innerText = ""
-            return
-          }
-        }
-      }
-      updateTimer();
-      const timer = setInterval(updateTimer, 100);
-    }
-
-    function changeCircle(status) {
-      const circle = document.getElementById("cercleGrille");
-      if (status === "open") {
-        circle.style.backgroundColor = "green";
+    if (heure === 9) {
+      if (minute >= 0 && minute < 10) {
+        f9xx1();
+      } else if (minute >= 10 && minute < 25) {
+        f9xx2();
+      } else if (minute >= 25 && minute < 60) {
+        f9xx3();
       } else {
-        circle.style.backgroundColor = "red";
+        error();
       }
+      return;
     }
 
-
-
-
-
-
-
-
-
-    /*change system*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-    let statut = none;
-    let late = 1;
-    function MettreAJourStatut() {
-      const maintenant = new Date();
-      const jour = maintenant.getDay();
-      const heure = maintenant.getHours();
-      const minute = maintenant.getMinutes();
-      const seconde = maintenant.getSeconds();
-      if (jour === 0 || jour === 6){
-        statutWeekend()
-        return
-      }
-      if (heure <= 8 && minute <= 25){
-        const statut = document.getElementById("statut");
-        const displayElement = document.getElementById("msgStatut");
-        statut.style.color = "green";
-        statut.innerText = "";
-        changeCircleStatut("open")
-        startCountdownStatut(8, 25, "Sonne");
-      }
-      if (heure >= 17 && minute >= 31){
-        const statut = document.getElementById("statut");
-        const displayElement = document.getElementById("msgStatut");
-        statut.style.color = "green";
-        statut.innerText = "fin de la journée";
-        changeCircleStatut("open")
-        displayElement.innerText = "Bonne soirée !";
-        return
-      }
-
-      if (heure == 8 && minute == (25+late)){
-        sonnerie()
-        statut = cours;
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 9 && minute == (20+late)){
-        sonnerie()
-        statut = intercours;
-      }else if (heure == 9 && minute == (25+late)){
-        sonnerie()
-        statut = cours;
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 10 && minute == (20+late)){
-        sonnerie()
-        statut = intercours;
-      }else if (heure == 10 && minute == (35+late)){
-        sonnerie()
-        statut = cours;
-      }else if (heure == 10 && minute >= (20+late) && minute < (35+late)){
-        récré()
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 11 && minute == (30+late)){
-        sonnerie()
-        statut = intercours;
-      }else if (heure == 11 && minute == (35+late)){
-        sonnerie()
-        statut = cours;
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 12 && minute == (30+late)){
-        sonnerie()
-        statut = intercours;
-      }else if (heure == 12 && minute == (35+late)){
-        sonnerie()
-        statut = cours;
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 13 && minute == (25+late)){
-        sonnerie()
-        statut = intercours;
-      }else if (heure == 13 && minute == (30+late)){
-        sonnerie()
-        statut = cours;
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 14 && minute == (25+late)){
-        sonnerie()
-        statut = intercours;
-      }else if (heure == 14 && minute == (30+late)){
-        sonnerie()
-        statut = cours;
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 15 && minute == (25+late)){
-        sonnerie()
-        statut = intercours;
-      }else if (heure == 15 && minute == (35+late)){
-        sonnerie()
-        statut = cours;
-      }else if(heure == 15 && minute >= (25+late) && minute < (35+late)){
-        récré()
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 16 && minute == (30+late)){
-        sonnerie()
-        statut = intercours;      
-      }else if (heure == 16 && minute == (35+late)){
-        sonnerie()
-        statut = cours;
-      }else{
-        coursIntercours()
-      }
-
-      if (heure == 17 && minute == (30+late)){
-        sonnerie()
-      }
-
-    }
-    function statutWeekend() {
-      const statut = document.getElementById("statut");
-      const displayElement = document.getElementById("msgStatut");
-      statut.style.color = "green";
-      statut.innerText = "weekend";
-      changeCircleStatut("open")
-      displayElement.innerText = "Reprise lundi à 8h30"
-    }
-    
-    function sonnerie() {
-      const statut = document.getElementById("statut");
-      const displayElement = document.getElementById("msgStatut");
-      statut.style.color = "green";
-      statut.innerText = "sonnerie";
-      changeCircleStatut("open")
-      displayElement.innerText = "reprise dans"
-    }
-
-    function récré() {
-      const statut = document.getElementById("statut");
-      const displayElement = document.getElementById("msgStatut");
-      statut.style.color = "green";
-      statut.innerText = "Récréation";
-      changeCircleStatut("open")
-      displayElement.innerText = "reprise dans"
-    }
-    function coursIntercours() {
-      const statut = document.getElementById("statut");
-      const displayElement = document.getElementById("msgStatut");
-      if (statut == intercours){
-        statut.style.color = "green";
-        statut.innerText = "Intercour";
-        changeCircleStatut("open")
-        displayElement.innerText = "reprise "
-      }else if (statut == cours){
-        statut.style.color = "red";
-        statut.innerText = "En cours";
-        changeCircleStatut("closed")
-        displayElement.innerText = "reprise "
-      }
-    }
-
-    function changeCircleStatut(status) {
-      const circle = document.getElementById("cercleStatut");
-      if (status === "open") {
-        circle.style.backgroundColor = "green";
+    if (heure === 10) {
+      if (minute >= 0 && minute < 15) {
+        f10xx1();
+      } else if (minute >= 15 && minute < 35) {
+        f10xx2();
+      } else if (minute >= 35 && minute < 60) {
+        f10xx3();
       } else {
-        circle.style.backgroundColor = "red";
+        error();
+      }
+      return;
+    }
+
+    if (heure === 11) {
+      if (minute >= 0 && minute < 25) {
+        f11xx1();
+      } else if (minute >= 25 && minute < 35) {
+        f11xx2();
+      } else if (minute >= 35 && minute < 60) {
+        f11xx3();
+      } else {
+        error();
+      }
+      return;
+    }
+
+    if (heure === 12) {
+      if (minute >= 0 && minute < 30) {
+        f12xx1();
+      } else if (minute >= 30 && minute < 35) {
+        f12xx2();
+      } else if (minute >= 35 && minute < 60) {
+        f12xx3();
+      } else {
+        error();
+      }
+      return;
+    }
+
+    if (heure === 13) {
+      if (minute >= 0 && minute < 20) {
+        f13xx1();
+      } else if (minute >= 20 && minute < 30) {
+        f13xx2();
+      } else if (minute >= 30 && minute < 60) {
+        f13xx3();
+      } else {
+        error();
+      }
+      return;
+    }
+
+    if (heure === 14) {
+      if (minute >= 0 && minute < 20) {
+        f14xx1();
+      } else if (minute >= 20 && minute < 30) {
+        f14xx2();
+      } else if (minute >= 30 && minute < 60) {
+        f14xx3();
+      } else {
+        error();
+      }
+      return;
+    }
+
+    if (heure === 15) {
+      if (minute >= 0 && minute < 25) {
+        f15xx1();
+      } else if (minute >= 25 && minute < 35) {
+        f15xx2();
+      } else if (minute >= 35 && minute < 60) {
+        f15xx3();
+      } else {
+        error();
+      }
+      return;
+    }
+
+    if (heure === 16) {
+      if (minute >= 0 && minute < 25) {
+        f16xx1();
+      } else if (minute >= 25 && minute < 35) {
+        f16xx2();
+      } else if (minute >= 35 && minute < 60) {
+        f16xx3();
+      } else {
+        error();
+      }
+      return;
+    }
+
+    if (heure === 17) {
+      if (minute >= 0 && minute < 30) {
+        f17xx1();
+      } else if (minute >= 30 && minute < 45) {
+        f17xx2();
+      } else if (minute >= 45 && minute < 60) {
+        outNight();
+      } else {
+        error();
+      }
+      return;
+    }
+
+    if (heure > 17) {
+      outNight();
+      return;
+    }
+  }
+
+  // Fonctions grille (utilisent maintenant des heures sans zéro initial)
+  function f8xx1() { setGrille("fermé", "red", "closed"); startCountdown(8, 10, "Ouvre"); }
+  function f8xx2() { setGrille("ouvert", "green", "open"); startCountdown(8, 25, "Ferme"); }
+  function f8xx3() { setGrille("fermé", "red", "closed"); startCountdown(9, 10, "Ouvre"); }
+
+  function f9xx1() { setGrille("fermé", "red", "closed"); startCountdown(9, 10, "Ouvre"); }
+  function f9xx2() { setGrille("ouvert", "green", "open"); startCountdown(9, 25, "Ferme"); }
+  function f9xx3() { setGrille("fermé", "red", "closed"); startCountdown(10, 15, "Ouvre"); }
+
+  function f10xx1() { setGrille("fermé", "red", "closed"); startCountdown(10, 15, "Ouvre"); }
+  function f10xx2() { setGrille("ouvert", "green", "open"); startCountdown(10, 35, "Ferme"); }
+  function f10xx3() { setGrille("fermé", "red", "closed"); startCountdown(11, 25, "Ouvre"); }
+
+  function f11xx1() { setGrille("fermé", "red", "closed"); startCountdown(11, 25, "Ouvre"); }
+  function f11xx2() { setGrille("ouvert", "green", "open"); startCountdown(11, 35, "Ferme"); }
+  function f11xx3() { setGrille("fermé", "red", "closed"); startCountdown(12, 25, "Ouvre"); }
+
+  function f12xx1() { setGrille("fermé", "red", "closed"); startCountdown(12, 25, "Ouvre"); }
+  function f12xx2() { setGrille("ouvert", "green", "open"); startCountdown(12, 35, "Ferme"); }
+  function f12xx3() { setGrille("fermé", "red", "closed"); startCountdown(13, 20, "Ouvre"); }
+
+  function f13xx1() { setGrille("fermé", "red", "closed"); startCountdown(13, 20, "Ouvre"); }
+  function f13xx2() { setGrille("ouvert", "green", "open"); startCountdown(13, 30, "Ferme"); }
+  function f13xx3() { setGrille("fermé", "red", "closed"); startCountdown(14, 20, "Ouvre"); }
+
+  function f14xx1() { setGrille("fermé", "red", "closed"); startCountdown(14, 20, "Ouvre"); }
+  function f14xx2() { setGrille("ouvert", "green", "open"); startCountdown(14, 30, "Ferme"); }
+  function f14xx3() { setGrille("fermé", "red", "closed"); startCountdown(15, 20, "Ouvre"); }
+
+  function f15xx1() { setGrille("fermé", "red", "closed"); startCountdown(15, 20, "Ouvre"); }
+  function f15xx2() { setGrille("ouvert", "green", "open"); startCountdown(15, 35, "Ferme"); }
+  function f15xx3() { setGrille("fermé", "red", "closed"); startCountdown(16, 30, "Ouvre"); }
+
+  function f16xx1() { setGrille("fermé", "red", "closed"); startCountdown(16, 30, "Ouvre"); }
+  function f16xx2() { setGrille("ouvert", "green", "open"); startCountdown(16, 35, "Ferme"); }
+  function f16xx3() { setGrille("fermé", "red", "closed"); startCountdown(17, 30, "Ouvre"); }
+
+  function f17xx1() { setGrille("fermé", "red", "closed"); startCountdown(17, 30, "Ouvre"); }
+  function f17xx2() { setGrille("ouvert", "green", "open"); startCountdown(17, 45, "Ferme"); }
+  function f17xx3() { outNight(); }
+
+  function setGrille(text, color, circleStatus) {
+    const grille = document.getElementById("grille");
+    const displayElement = document.getElementById("msgGrille");
+    grille.style.color = color;
+    grille.innerText = text;
+    changeCircle(circleStatus);
+    // displayElement.innerText = ""  // startCountdown will update it
+  }
+
+  function error() {
+    const grille = document.getElementById("grille");
+    const displayElement = document.getElementById("msgGrille");
+    grille.style.color = "red";
+    grille.innerText = "erreur veuillez réessayer ultérieurement";
+    changeCircle("closed");
+    displayElement.innerText = "";
+  }
+
+  function outMorning() {
+    const grille = document.getElementById("grille");
+    const displayElement = document.getElementById("msgGrille");
+    grille.style.color = "red";
+    grille.innerText = "fermé";
+    changeCircle("closed");
+    displayElement.innerText = "Ouvre à 8h10";
+  }
+
+  function outWeekend() {
+    const grille = document.getElementById("grille");
+    const displayElement = document.getElementById("msgGrille");
+    grille.style.color = "red";
+    grille.innerText = "fermé";
+    changeCircle("closed");
+    displayElement.innerText = "Ouvre lundi à 8h10";
+  }
+
+  function outNight() {
+    const grille = document.getElementById("grille");
+    const displayElement = document.getElementById("msgGrille");
+    grille.style.color = "red";
+    grille.innerText = "fermé";
+    changeCircle("closed");
+    displayElement.innerText = "Ouvre demain à 8h10";
+  }
+
+  // Timer propre (1s)
+  function startCountdown(targetHour, targetMinute, status) {
+    const displayElement = document.getElementById("msgGrille");
+    let timer;
+    function updateTimer() {
+      const now = new Date();
+      const target = new Date();
+      target.setHours(targetHour, targetMinute, 0, 0);
+      const diff = target - now;
+      if (diff <= 0) {
+        clearInterval(timer);
+        displayElement.innerText = "";
+        // on peut forcer une mise à jour immédiate
+        MettreAJourHoraires();
+        return;
+      }
+      const minutes = Math.floor(diff / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      if (minutes === 0) {
+        displayElement.innerText = status + " dans " + seconds + " secondes";
+      } else {
+        displayElement.innerText = status + " dans " + minutes + " minutes " + seconds + " secondes";
       }
     }
+    updateTimer();
+    timer = setInterval(updateTimer, 1000);
+  }
 
-    function startCountdownStatut(targetHour, targetMinute, status) {
-      function updateTimerStatut() {
-        const now = new Date();
-        const displayElement = document.getElementById("msgStatut");
-        const target = new Date();
-        target.setHours(targetHour, targetMinute, 0, 0);
-        const diff = target - now; // différence en ms
-        if (diff <= 0) {
-          clearInterval(timer);
-          return
-        }
-        const minutes = Math.floor(diff / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        displayElement.innerText =
-          status + " dans " + minutes + " minutes " + seconds + " secondes";
-        if (minutes === 0) {
-          displayElement.innerText =
-            status + " dans " + seconds + " secondes";
-          if (seconds === 0) {
-            displayElement.innerText = ""
-            return
-          }
-        }
+  function changeCircle(status) {
+    const circle = document.getElementById("cercleGrille");
+    if (!circle) return;
+    circle.style.backgroundColor = status === "open" ? "green" : "red";
+  }
+
+  /* --- Statut (sonneries / cours) --- */
+
+  function MettreAJourStatut() {
+    const maintenant = new Date();
+    const jour = maintenant.getDay();
+    const heure = maintenant.getHours();
+    const minute = maintenant.getMinutes();
+
+    const statutEl = document.getElementById("statut");
+    const displayElement = document.getElementById("msgStatut");
+
+    if (jour === 0 || jour === 6) {
+      statutWeekend();
+      return;
+    }
+
+    // Fin de journée simple
+    if (heure >= 17 && (heure > 17 || minute >= 31)) {
+      statutEl.style.color = "green";
+      statutEl.innerText = "fin de la journée";
+      changeCircleStatut("open");
+      displayElement.innerText = "Bonne soirée !";
+      statutState = "none";
+      return;
+    }
+
+    // Logique de détection sonnerie / cours / intercours / récré
+    // On vérifie les instants précis (avec le décalage late)
+    // Remarque : on utilise des comparaisons exactes pour déclencher la sonnerie
+    if (heure === 8 && minute === (25 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 9 && minute === (20 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else if (heure === 9 && minute === (25 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 10 && minute === (20 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else if (heure === 10 && minute === (35 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 11 && minute === (30 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else if (heure === 11 && minute === (35 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 12 && minute === (30 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else if (heure === 12 && minute === (35 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 13 && minute === (25 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else if (heure === 13 && minute === (30 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 14 && minute === (25 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else if (heure === 14 && minute === (30 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 15 && minute === (25 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else if (heure === 15 && minute === (35 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 16 && minute === (30 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else if (heure === 16 && minute === (35 + late)) {
+      sonnerie();
+      statutState = "cours";
+    } else if (heure === 17 && minute === (30 + late)) {
+      sonnerie();
+      statutState = "intercours";
+    } else {
+      // Déterminer si on est en cours ou intercours selon les plages horaires
+      coursIntercoursRender();
+    }
+  }
+
+  function statutWeekend() {
+    const statutEl = document.getElementById("statut");
+    const displayElement = document.getElementById("msgStatut");
+    statutEl.style.color = "green";
+    statutEl.innerText = "weekend";
+    changeCircleStatut("open");
+    displayElement.innerText = "Reprise lundi à 8h30";
+    statutState = "none";
+  }
+
+  function sonnerie() {
+    const statutEl = document.getElementById("statut");
+    const displayElement = document.getElementById("msgStatut");
+    statutEl.style.color = "green";
+    statutEl.innerText = "sonnerie";
+    changeCircleStatut("open");
+    displayElement.innerText = "reprise dans";
+    // event sound hook could be added here
+  }
+
+  function recre() {
+    const statutEl = document.getElementById("statut");
+    const displayElement = document.getElementById("msgStatut");
+    statutEl.style.color = "green";
+    statutEl.innerText = "Récréation";
+    changeCircleStatut("open");
+    displayElement.innerText = "reprise dans";
+  }
+
+  function coursIntercoursRender() {
+    const statutEl = document.getElementById("statut");
+    const displayElement = document.getElementById("msgStatut");
+    if (statutState === "intercours") {
+      statutEl.style.color = "green";
+      statutEl.innerText = "Intercours";
+      changeCircleStatut("open");
+      displayElement.innerText = "reprise ";
+    } else if (statutState === "cours") {
+      statutEl.style.color = "red";
+      statutEl.innerText = "En cours";
+      changeCircleStatut("closed");
+      displayElement.innerText = "reprise ";
+    } else {
+      // état par défaut quand on ne sait pas
+      statutEl.style.color = "green";
+      statutEl.innerText = "";
+      changeCircleStatut("open");
+      displayElement.innerText = "";
+    }
+  }
+
+  function changeCircleStatut(status) {
+    const circle = document.getElementById("cercleStatut");
+    if (!circle) return;
+    circle.style.backgroundColor = status === "open" ? "green" : "red";
+  }
+
+  function startCountdownStatut(targetHour, targetMinute, status) {
+    const displayElement = document.getElementById("msgStatut");
+    let timer;
+    function updateTimerStatut() {
+      const now = new Date();
+      const target = new Date();
+      target.setHours(targetHour, targetMinute, 0, 0);
+      const diff = target - now;
+      if (diff <= 0) {
+        clearInterval(timer);
+        displayElement.innerText = "";
+        MettreAJourStatut();
+        return;
       }
-      updateTimerStatut();
-      const timer = setInterval(updateTimerStatut, 100);
+      const minutes = Math.floor(diff / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      if (minutes === 0) {
+        displayElement.innerText = status + " dans " + seconds + " secondes";
+      } else {
+        displayElement.innerText = status + " dans " + minutes + " minutes " + seconds + " secondes";
+      }
     }
+    updateTimerStatut();
+    timer = setInterval(updateTimerStatut, 1000);
+  }
 
-    
-    
-    
-    /*out code*/
+  /* Synchronisation / UI utilities */
 
+  function boucleSynchro() {
+    const maintenant = new Date();
+    const msRestantes = 1000 - maintenant.getMilliseconds();
+    MettreAJourHoraires();
+    MettreAJourStatut();
+    setTimeout(boucleSynchro, msRestantes);
+  }
 
-    
-    
-    
-    
-    
-    
-    function boucleSynchro() {
-      const maintenant = new Date();
-      const msRestantes = 1000 - maintenant.getMilliseconds();
-      MettreAJourHoraires();
-      setTimeout(boucleSynchro, msRestantes);
-    }
-    const link = document.getElementById("themeStylesheet");
-    const savedStyle = localStorage.getItem("themeCSS");
+  // thème
+  const link = document.getElementById("themeStylesheet");
+  const savedStyle = localStorage.getItem("themeCSS");
+  if (link) {
     if (savedStyle) {
       link.setAttribute("href", savedStyle);
       if (savedStyle === "styleBlack.css") {
@@ -799,124 +577,119 @@
       document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
       document.getElementById("divIcon").style.backgroundColor = "white";
     }
+  }
 
-    function switchCSS() {
-      const link = document.getElementById("themeStylesheet");
-      if (link.getAttribute("href") === "style.css") {
-        link.setAttribute("href", "styleBlack.css");
-        document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/Black-icon.svg";
-        document.getElementById("divIcon").style.backgroundColor = "black";
-        localStorage.setItem("themeCSS", "styleBlack.css");
-      } else {
-        link.setAttribute("href", "style.css");
-        document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
-        document.getElementById("divIcon").style.backgroundColor = "white";
-        localStorage.setItem("themeCSS", "style.css");
-      }
+  function switchCSS() {
+    const link = document.getElementById("themeStylesheet");
+    if (!link) return;
+    if (link.getAttribute("href") === "style.css") {
+      link.setAttribute("href", "styleBlack.css");
+      document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/Black-icon.svg";
+      document.getElementById("divIcon").style.backgroundColor = "black";
+      localStorage.setItem("themeCSS", "styleBlack.css");
+    } else {
+      link.setAttribute("href", "style.css");
+      document.getElementById("icon").src = "https://school-toolsl.github.io/horaires-lycee/icons/White-icon.svg";
+      document.getElementById("divIcon").style.backgroundColor = "white";
+      localStorage.setItem("themeCSS", "style.css");
     }
-    document.getElementById("divIcon").onclick = function() {
-      switchCSS()
-    };
+  }
 
-    let status = "closed";  // variable globale qui garde l'état
-    function open_closeMenu() {
-      const sidebar = document.getElementById("sidebar");
-      const menu = document.getElementById("menu");
-      if (status === "closed") {
-        sidebar.style.display = "block";
-        status = "open";  
-        menu.style.margin = "25px 0 0 200px";
-      } else {
-        sidebar.style.display = "none";
-        status = "closed"; 
-        menu.style.margin = "25px 0 0 15px";
-      }
+  const divIcon = document.getElementById("divIcon");
+  if (divIcon) divIcon.onclick = switchCSS;
+
+  // menu
+  let status = "closed";
+  function open_closeMenu() {
+    const sidebar = document.getElementById("sidebar");
+    const menu = document.getElementById("menu");
+    if (!sidebar || !menu) return;
+    if (status === "closed") {
+      sidebar.style.display = "block";
+      status = "open";
+      menu.style.margin = "25px 0 0 200px";
+    } else {
+      sidebar.style.display = "none";
+      status = "closed";
+      menu.style.margin = "25px 0 0 15px";
     }
-    document.getElementById("menu").onclick = function() {
-      open_closeMenu();
-    };
+  }
+  const menuEl = document.getElementById("menu");
+  if (menuEl) menuEl.onclick = open_closeMenu;
 
+  // test connexion
+  async function testConnexion() {
+    try {
+      const response = await fetch("https://school-toolsl.github.io/horaires-lycee/ping.txt?_=" + Date.now(), {
+        method: "GET",
+        cache: "no-store"
+      });
+      if (response.ok) {
+        quandConnecte();
+        return true;
+      } else {
+        throw new Error("Réponse non OK");
+      }
+    } catch (error) {
+      quandDeconnecte();
+      return false;
+    }
+  }
 
-    // Vérifie l'accès à ping.txt
-    async function testConnexion() {
-      try {
-        const response = await fetch("https://school-toolsl.github.io/horaires-lycee/ping.txt?_=" + Date.now(), {
-          method: "GET",
-          cache: "no-store"
-        });
-        if (response.ok) {
-          quandConnecte();
-          return true;
-        } else {
-          throw new Error("Réponse non OK");
+  function quandConnecte() {
+    const el = document.getElementById("disclaimer");
+    if (el) el.style.display = "none";
+  }
+
+  function quandDeconnecte() {
+    const el = document.getElementById("disclaimer");
+    if (el) el.style.display = "block";
+  }
+
+  function flashFooter(footerId = 'footer') {
+    let footerCounter = localStorage.getItem('footerCounter');
+    footerCounter = footerCounter ? parseInt(footerCounter, 10) : 0;
+    footerCounter++;
+    if (footerCounter <= 3) {
+      const footer = document.getElementById(footerId);
+      if (!footer) return;
+      footer.style.transition = 'background-color 0.2s';
+      const originalColor = getComputedStyle(footer).backgroundColor;
+      let flashes = 0;
+      const maxFlashes = 3;
+      const interval = setInterval(() => {
+        footer.style.backgroundColor = (flashes % 2 === 0) ? 'red' : originalColor;
+        flashes++;
+        if (flashes >= maxFlashes * 2) {
+          clearInterval(interval);
+          footer.style.backgroundColor = originalColor;
         }
-      } catch (error) {
-        quandDeconnecte();
-        return false;
-      }
+      }, 200);
     }
+    localStorage.setItem('footerCounter', footerCounter);
+  }
 
-    function quandConnecte() {
-      document.getElementById("disclaimer").style.display = "none";
-    }
+  function updateClock() {
+    const clock = document.getElementById('clock');
+    if (!clock) return;
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    clock.textContent = `${hours}:${minutes}:${seconds}`;
+  }
 
-    function quandDeconnecte() {
-      document.getElementById("disclaimer").style.display = "block";
-    }
+  // Initialisation et boucles
+  setInterval(updateClock, 1000);
+  updateClock();
 
-    function flashFooter(footerId = 'footer') {
-      // Récupération du compteur depuis localStorage
-      let footerCounter = localStorage.getItem('footerCounter');
-      footerCounter = footerCounter ? parseInt(footerCounter, 10) : 0;
-      // Incrémentation
-      footerCounter++;
-      // Si c'est l'une des trois premières visites
-      if (footerCounter <= 3) {
-        const footer = document.getElementById(footerId);
-        if (!footer) return;
-        footer.style.transition = 'background-color 0.2s';
-        const originalColor = getComputedStyle(footer).backgroundColor;
-        let flashes = 0;
-        const maxFlashes = 3;
-        const interval = setInterval(() => {
-          // Alterne entre rouge et la couleur d'origine
-          if (flashes % 2 === 0) {
-            footer.style.backgroundColor = 'red';
-          } else {
-            footer.style.backgroundColor = originalColor;
-          }
-          flashes++;
-          if (flashes >= maxFlashes * 2) {
-            clearInterval(interval);
-            footer.style.backgroundColor = originalColor; // Remet la couleur d'origine à la fin
-          }
-        }, 200);
-      }
-      // Sauvegarde du compteur
-      localStorage.setItem('footerCounter', footerCounter);
-    }
+  setInterval(testConnexion, 10000);
+  testConnexion();
 
-    function updateClock() {
-      const clock = document.getElementById('clock');
-      const now = new Date();
-  
-      // Format HH:MM:SS
-      const hours = String(now.getHours()).padStart(2,'0');
-      const minutes = String(now.getMinutes()).padStart(2,'0');
-      const seconds = String(now.getSeconds()).padStart(2,'0');
-
-      clock.textContent = `${hours}:${minutes}:${seconds}`;
-    }
-
-    setInterval(updateClock, 1000);
-    updateClock();
-    setInterval(testConnexion, 10000);
-    testConnexion();
-    flashFooter();
-    MettreAJourHoraires();
-    MettreAJourStatut();
-    boucleSynchro();
-  </script>
+  flashFooter();
+  MettreAJourHoraires();
+  MettreAJourStatut();
+  boucleSynchro();
+</script>
 </body>
-
 </html>
