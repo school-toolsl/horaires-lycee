@@ -98,7 +98,7 @@ aside{
   font-size: 30px;
 }
 nav ul{
-  margin: 40px 30px 10px 0;
+  margin: 40px 35px 10px 0;
 }
 ul li{
   margin-bottom: 10px;
@@ -177,7 +177,18 @@ main {
   margin: 2px 0 0 0;
 }
 
-#cercleAutres {
+.msg {
+  margin: 1px 0 15px 10px;
+  padding-bottom: 5px
+}
+
+#msgGrille {
+  margin: 1px 0 15px 10px;
+  padding-bottom: 5px;
+  color: white;
+}
+
+#cercleStatut {
   width: 8px;
   height: 8px;
   background-color: red;
@@ -185,12 +196,7 @@ main {
   margin: 2px 0 0 0;
 }
 
-.msg {
-  margin: 1px 0 15px 10px;
-  padding-bottom: 5px
-}
-
-#msgGrille {
+#msgStatut {
   margin: 1px 0 15px 10px;
   padding-bottom: 5px;
   color: white;
@@ -221,9 +227,14 @@ footer {
   .container2{
     padding: 10px 0 5px 0;
   }
-   #txtGrille {
+  #txtGrille {
     margin-left: 15px;
   }
+  
+  #txtStatut {
+    margin-left: 15px;
+  }
+
   header {
     max-width: 750px;
     min-height: 150px;
@@ -231,6 +242,10 @@ footer {
     margin: 0 auto;
   }
   #msgGrille {
+    margin-left: 25px
+  }
+
+  #msgStatut {
     margin-left: 25px
   }
 }

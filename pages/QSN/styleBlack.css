@@ -24,13 +24,14 @@ aside{
 }
 #horloge h2{
   margin: 40px 0 0 0;
+  font-size: 20px;
 }
 #horloge p {
   font-size: 30px;
-  margin-left: 50px;
+  margin: 10px 0 0 54px;
 }
 nav ul{
-  margin: 40px 30px 10px 0;
+  margin: 40px 35px 10px 0;
 }
 ul li{
   margin-bottom: 10px;
@@ -41,7 +42,7 @@ nav ul li a{
 #version{
   position: fixed;
   bottom: 30px;
-  left: 70px
+  left: 65px;
 }
 
 #screenSize{
@@ -101,11 +102,11 @@ nav ul li a{
   height: 90%;
   padding: 2px 0 0 2px;
 }
-h1, h2, #text1, #text2{
+h1, h2, #text1, #text2, #text3{
   text-align:center;
 }
 h1{
-  margin: 30px 0 0 0;
+  margin: 30px 0 30px 0;
   padding: 10px 8px 0px 8px;
   font-size: 24px;
 }
@@ -115,7 +116,7 @@ h1{
 main{
   margin: 90px 0 0 0;
 }
-#text1, #text2{
+#text1, #text2, #text3{
   background-color: #666666;
   color: white;
   border-radius: 10px;
@@ -123,12 +124,20 @@ main{
   margin: 0 auto;
   max-width: 1000px;
 }
+
+.date{
+  max-width: 1000px;
+  margin: 20px auto 5px;
+}
 p {
   padding: 10px 5px 0 5px;
   margin: 20px 10px 5px 5px;
 }
 li {
   margin: 0 0 2px 0;
+}
+#credits{
+  margin: 0 0 110px 0;
 }
 footer {
   font-size: 10px;
