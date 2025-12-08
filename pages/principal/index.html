@@ -560,6 +560,7 @@
 
 
 
+    let statut = none;
     let late = 1;
     function MettreAJourStatut() {
       const maintenant = new Date();
@@ -586,62 +587,98 @@
         statut.innerText = "fin de la journée";
         changeCircleStatut("open")
         displayElement.innerText = "Bonne soirée !";
+        return
       }
 
       if (heure == 8 && minute == (25+late)){
         sonnerie()
+        statut = cours;
+      }else{
+        coursIntercours()
       }
 
       if (heure == 9 && minute == (20+late)){
         sonnerie()
+        statut = intercours;
       }else if (heure == 9 && minute == (25+late)){
         sonnerie()
+        statut = cours;
+      }else{
+        coursIntercours()
       }
 
       if (heure == 10 && minute == (20+late)){
         sonnerie()
+        statut = intercours;
       }else if (heure == 10 && minute == (35+late)){
         sonnerie()
+        statut = cours;
       }else if (heure == 10 && minute >= (20+late) && minute < (35+late)){
         récré()
+      }else{
+        coursIntercours()
       }
 
       if (heure == 11 && minute == (30+late)){
         sonnerie()
+        statut = intercours;
       }else if (heure == 11 && minute == (35+late)){
         sonnerie()
+        statut = cours;
+      }else{
+        coursIntercours()
       }
 
       if (heure == 12 && minute == (30+late)){
         sonnerie()
+        statut = intercours;
       }else if (heure == 12 && minute == (35+late)){
         sonnerie()
+        statut = cours;
+      }else{
+        coursIntercours()
       }
 
       if (heure == 13 && minute == (25+late)){
         sonnerie()
+        statut = intercours;
       }else if (heure == 13 && minute == (30+late)){
         sonnerie()
+        statut = cours;
+      }else{
+        coursIntercours()
       }
 
       if (heure == 14 && minute == (25+late)){
         sonnerie()
+        statut = intercours;
       }else if (heure == 14 && minute == (30+late)){
         sonnerie()
+        statut = cours;
+      }else{
+        coursIntercours()
       }
 
       if (heure == 15 && minute == (25+late)){
         sonnerie()
+        statut = intercours;
       }else if (heure == 15 && minute == (35+late)){
         sonnerie()
+        statut = cours;
       }else if(heure == 15 && minute >= (25+late) && minute < (35+late)){
         récré()
+      }else{
+        coursIntercours()
       }
 
       if (heure == 16 && minute == (30+late)){
         sonnerie()
+        statut = intercours;      
       }else if (heure == 16 && minute == (35+late)){
         sonnerie()
+        statut = cours;
+      }else{
+        coursIntercours()
       }
 
       if (heure == 17 && minute == (30+late)){
@@ -674,6 +711,21 @@
       statut.innerText = "Récréation";
       changeCircleStatut("open")
       displayElement.innerText = "reprise dans"
+    }
+    function coursIntercours() {
+      const statut = document.getElementById("statut");
+      const displayElement = document.getElementById("msgStatut");
+      if (statut == intercours){
+        statut.style.color = "green";
+        statut.innerText = "Intercour";
+        changeCircleStatut("open")
+        displayElement.innerText = "reprise "
+      }else if (statut == cours){
+        statut.style.color = "red";
+        statut.innerText = "En cours";
+        changeCircleStatut("closed")
+        displayElement.innerText = "reprise "
+      }
     }
 
     function changeCircleStatut(status) {
