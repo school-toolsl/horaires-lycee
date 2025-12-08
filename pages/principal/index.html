@@ -510,10 +510,11 @@
       displayElement.innerText = "reprise ";
     } else {
       // état par défaut quand on ne sait pas
-      statutEl.style.color = "green";
-      statutEl.innerText = "";
-      changeCircleStatut("open");
-      displayElement.innerText = "";
+      statutEl.style.color = "red";
+      statutEl.innerText = "chargement...";
+      changeCircleStatut("closed");
+      displayElement.innerText = "error";
+      console.log("error '517' <tooElses>")
     }
   }
 
