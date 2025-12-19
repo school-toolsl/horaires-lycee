@@ -379,6 +379,14 @@
     circle.style.backgroundColor = status === "open" ? "green" : "red";
   }
 
+
+
+
+
+
+
+
+
   /* --- Statut (sonneries / cours) --- */
 
   function MettreAJourStatut() {
@@ -386,7 +394,6 @@
     const jour = maintenant.getDay();
     const heure = maintenant.getHours();
     const minute = maintenant.getMinutes();
-
     const statutEl = document.getElementById("statut");
     const displayElement = document.getElementById("msgStatut");
 
@@ -462,8 +469,7 @@
     } else if (heure === 17 && minute === (30 + late)) {
       sonnerie();
       statutState = "intercours";
-    } else {
-      // Déterminer si on est en cours ou intercours selon les plages horaires
+    } else{
       coursIntercoursRender();
     }
   }
@@ -502,12 +508,12 @@
     const displayElement = document.getElementById("msgStatut");
     if (statutState === "intercours") {
       statutEl.style.color = "green";
-      statutEl.innerText = "Intercours";
+      statutEl.innerText = "intercours";
       changeCircleStatut("open");
       displayElement.innerText = "reprise ";
     } else if (statutState === "cours") {
       statutEl.style.color = "red";
-      statutEl.innerText = "En cours";
+      statutEl.innerText = "cours";
       changeCircleStatut("closed");
       displayElement.innerText = "reprise ";
     } else {
