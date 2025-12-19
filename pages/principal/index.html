@@ -381,6 +381,31 @@
 
   /* --- Statut (sonneries / cours) --- */
 
+  // Retourne la liste des heures de sonnerie pour la journée (tenant compte de `late`)
+  function getTodaySonneries() {
+    const l = typeof late === 'number' ? late : 0;
+    return [
+      { hour: 8, minute: 25 + l, afterState: "cours" },
+      { hour: 9, minute: 20 + l, afterState: "intercours" },
+      { hour: 9, minute: 25 + l, afterState: "cours" },
+      { hour: 10, minute: 20 + l, afterState: "intercours" },
+      { hour: 10, minute: 35 + l, afterState: "cours" },
+      { hour: 11, minute: 30 + l, afterState: "intercours" },
+      { hour: 11, minute: 35 + l, afterState: "cours" },
+      { hour: 12, minute: 30 + l, afterState: "intercours" },
+      { hour: 12, minute: 35 + l, afterState: "cours" },
+      { hour: 13, minute: 25 + l, afterState: "intercours" },
+      { hour: 13, minute: 30 + l, afterState: "cours" },
+      { hour: 14, minute: 25 + l, afterState: "intercours" },
+      { hour: 14, minute: 30 + l, afterState: "cours" },
+      { hour: 15, minute: 25 + l, afterState: "intercours" },
+      { hour: 15, minute: 35 + l, afterState: "cours" },
+      { hour: 16, minute: 30 + l, afterState: "intercours" },
+      { hour: 16, minute: 35 + l, afterState: "cours" },
+      { hour: 17, minute: 30 + l, afterState: "intercours" }
+    ];
+  }
+
   function MettreAJourStatut() {
     const maintenant = new Date();
     const jour = maintenant.getDay();
@@ -405,67 +430,50 @@
       return;
     }
 
-    // Logique de détection sonnerie / cours / intercours / récré
-    // On vérifie les instants précis (avec le décalage late)
-    // Remarque : on utilise des comparaisons exactes pour déclencher la sonnerie
-    if (heure === 8 && minute === (25 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 9 && minute === (20 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else if (heure === 9 && minute === (25 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 10 && minute === (20 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else if (heure === 10 && minute === (35 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 11 && minute === (30 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else if (heure === 11 && minute === (35 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 12 && minute === (30 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else if (heure === 12 && minute === (35 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 13 && minute === (25 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else if (heure === 13 && minute === (30 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 14 && minute === (25 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else if (heure === 14 && minute === (30 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 15 && minute === (25 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else if (heure === 15 && minute === (35 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 16 && minute === (30 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else if (heure === 16 && minute === (35 + late)) {
-      sonnerie();
-      statutState = "cours";
-    } else if (heure === 17 && minute === (30 + late)) {
-      sonnerie();
-      statutState = "intercours";
-    } else {
-      // Déterminer si on est en cours ou intercours selon les plages horaires
-      coursIntercoursRender();
+    // Recuperer la liste des sonneries d'aujourd'hui
+    const sonneries = getTodaySonneries();
+
+    // 1) si on est exactement à la minute d'une sonnerie -> "sonnerie"
+    for (let s of sonneries) {
+      if (heure === s.hour && minute === s.minute) {
+        sonnerie();
+        // on indique quel état suit cette sonnerie (cours / intercours)
+        statutState = s.afterState;
+        return;
+      }
     }
+
+    // 2) fallback : si on a manqué la sonnerie (site chargé après), on cherche la
+    // dernière sonnerie passée et on applique l'état qui suit cette sonnerie.
+    let last = null;
+    for (let s of sonneries) {
+      const sDate = new Date();
+      sDate.setHours(s.hour, s.minute, 0, 0);
+      if (sDate <= maintenant) last = s;
+    }
+    if (last) {
+      // appliquer l'état correspondant à la dernière sonnerie passée
+      statutState = last.afterState;
+      coursIntercoursRender();
+      return;
+    }
+
+    // 3) avant la première sonnerie (matinée avant démarrage)
+    const first = sonneries.length ? sonneries[0] : null;
+    if (first) {
+      if (heure < first.hour || (heure === first.hour && minute < first.minute)) {
+        // Avant le début des sonneries / cours (matinée)
+        statutEl.style.color = "red";
+        statutEl.innerText = "avant la journée";
+        changeCircleStatut("closed");
+        displayElement.innerText = "Début des cours bientôt";
+        statutState = "none";
+        return;
+      }
+    }
+
+    // 4) dernier recours : déterminer à partir du statutState existant
+    coursIntercoursRender();
   }
 
   function statutWeekend() {
